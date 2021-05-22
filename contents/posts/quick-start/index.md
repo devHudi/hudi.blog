@@ -1,28 +1,19 @@
-# gatsby-starter-hoodie
-
-## 🚀 About gatsby-starter-hoodie
-
-gatsby-starter-hoodie is a gatsby theme created for writing tech blogs. Markdown, Code Highlighting in various programming languages, and Katex syntax are supported. Also, you can easily categorize articles into tags and series.
-
-Start your blog with a neatly designed gatsby-starter-hoodie that supports dark mode.
-
-## Features
-
-- Markdown
-- Code Highlighting
-- Katex Syntax
-- Dark Mode (Responsive to the settings of the OS)
-- Tag Categoriazation
-- Series Categorization
-- Responsive Web
-- SEO
-- Utterance (Comment widget)
+---
+title: "🚀 2. Quick Start"
+description:
+date: 2021-05-02
+update: 2021-05-02
+tags:
+  - hoodie
+  - quick-start
+series: "Getting started your blog with gatsby-starter-hoodie"
+---
 
 Getting started your blog with gatsby-starter-hoodie by following steps below. It's very easy 😉.
 
 ## 1. Create a Gatsby site
 
-> Make sure you have **node.js** installed on your computer.
+> Make sure you have **node.js** and **gatsby-cli** installed on your computer.
 
 ```
 $ npx gatsby new my-hoodie-blog https://github.com/devHudi/gatsby-starter-hoodie
@@ -46,25 +37,26 @@ If you don't know how to create a GitHub repository, follow the [official GitHub
 ### Add remote repository
 
 ```
-git remote add origin https://github.com/{YOUR_GITHUB_NAME}/{YOUR_REPOSITORY_NAME}
+$ git init
+$ git remote add origin https://github.com/{YOUR_GITHUB_NAME}/{YOUR_REPOSITORY_NAME}
 ```
 
 ## 4. Write blog-config.js
 
 ```javascript
 module.exports = {
-  title: "hoodie",
-  description: "Hello :) I'm Hudi who developed gatsby-starter-hoodie theme.",
-  author: "Hudi",
-  siteUrl: "https://hudi.blog",
+  title: "MY BLOG",
+  description: "Hello, This is my blog",
+  author: "YOUR NAME",
+  siteUrl: "https://myblog.com",
   links: {
-    github: "https://github.com/devHudi",
-    facebook: "https://www.facebook.com/profile.php?id=100057724153835",
-    instagram: "https://www.instagram.com/dawn_fromeast/",
-    etc: "https://www.notion.so/Hudi-s-R-sum-0c1d1a1b35284d1eaf05c5bfac4a3cad",
+    github: "https://github.com",
+    facebook: "https://www.facebook.com",
+    instagram: "https://www.instagram.com",
+    etc: "https://www.google.com/",
   },
   utterances: {
-    repo: "devHudi/gatsby-starter-hoodie",
+    repo: "{YOUR_GITHUB_NAME}/{YOUR_REPOSITORY_NAME}",
     type: "pathname",
   },
 }
@@ -73,6 +65,10 @@ module.exports = {
 gatsby-starter-hoodie provides a configuration file called `blog-config.js`. In this file, you can configure blog, biography (profile), and utterance. The website settings you are currently viewing are as above.
 
 Configure `blog-config.js` to suit your blog. However, it is recommended not to modify `utterances.type`.
+
+### Change profile image
+
+Replace `src/images/profile.png` with the image you want. To change the image file name, you need to change the source code of `src/components/Bio.jsx`.
 
 ## 5. Add your content
 
@@ -90,7 +86,7 @@ If you connect the github repository using Netlify, it is automatically distribu
 
 #### Case 1
 
-If the repository name is the same as your GitHub name (if your GitHub page URL is `https://{YOUR_GITHUB_NAME}.github.io`) run the following command to deploy.
+If the repository name contains .github.io (if your GitHub page URL is `https://{YOUR_GITHUB_NAME}.github.io`) run the following command to deploy.
 
 ```
 $ npm run deploy-gh
