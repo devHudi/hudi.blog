@@ -6,6 +6,7 @@ const StyledMarkdown = styled.div`
     font-size: 1.1rem;
     color: ${props => props.theme.colors.text};
     line-height: 1.6;
+    overflow: hidden;
   }
 
   & > p,
@@ -18,6 +19,10 @@ const StyledMarkdown = styled.div`
   & .katex-display {
     margin-top: 0;
     margin-bottom: 1.5rem;
+  }
+
+  & p {
+    overflow-x: scroll;
   }
 
   & h2,
@@ -104,7 +109,8 @@ const StyledMarkdown = styled.div`
     border-bottom: none;
   }
 
-  & p > code.language-text {
+  & p > code.language-text,
+  & li > code.language-text {
     padding: 0.1rem 0.3rem;
     font-size: 0.9rem;
     background-color: ${props => props.theme.colors.inlineCodeBackground};
