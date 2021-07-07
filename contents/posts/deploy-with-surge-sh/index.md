@@ -1,5 +1,5 @@
 ---
-title: "Surge.sh 로 무료로 정적 웹 어플리케이션 배포하기 🚚"
+title: "Surge.sh 로 무료로 정적 웹 어플리케이션 배포하기"
 date: 2018-10-18
 update: 2018-10-18
 tags:
