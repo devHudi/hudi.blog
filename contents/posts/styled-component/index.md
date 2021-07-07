@@ -7,6 +7,8 @@ tags:
   - tutorial
 ---
 
+> 이전 블로그 (https://hudi.kr) 에서 이전해온 글 입니다.
+
 ![](./thumb.jpeg)
 
 우리는 React 에서 컴포넌트에 스타일링을 하기 위해서, 외부에 CSS 파일을 작성했다. 그리고 아마도 Webpack 의 css-loader 를 사용하여, 다음과 같이 CSS 파일을 불러왔을 것이다.
