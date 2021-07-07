@@ -1,10 +1,8 @@
 ---
 title: "🍴 인후라이프 2.0 개발일지"
 date: 2018-09-15
-update: 2018-09-18
 tags:
   - dev-log
-  - inhoolife
 series: "개발 일지 💻"
 ---
 
