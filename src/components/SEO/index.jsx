@@ -13,6 +13,16 @@ const SEO = ({ title, description, url }) => {
       <meta property="og:url" content={url} />
       <meta property="og:title" content={title} />
       {description && <meta property="og:description" content={description} />}
+
+      <script
+        async
+        src="https://www.googletagmanager.com/gtag/js?id=G-9EMQVPHMY6"
+      ></script>
+      <script>
+        {`window.dataLayer = window.dataLayer || []; function gtag()
+        {dataLayer.push(arguments)}
+        gtag('js', new Date()); gtag('config', 'G-9EMQVPHMY6');`}
+      </script>
     </Helmet>
   )
 }
