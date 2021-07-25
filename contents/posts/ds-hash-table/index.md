@@ -3,10 +3,10 @@ title: "[DS] 해시테이블 (Hash Table)"
 date: 2021-07-21
 tags:
   - CSE
-  - algorithm
   - data-structure
+  - algorithm
   - python
-series: "Data Structure 🛠️"
+series: "Data Structure with Python 🛠️"
 ---
 
 > 본 포스트는 [Do it! 자료구조와 함께 배우는 알고리즘 입문 : 파이썬 편](https://book.naver.com/bookdb/book_detail.nhn?bid=16419115)의 일부를 참고하여 작성하였습니다.
