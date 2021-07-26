@@ -16,6 +16,11 @@ const SeriesHeader = styled.h2`
   font-size: 1rem;
   font-weight: bold;
   color: ${props => props.theme.colors.text};
+
+  & > span {
+    font-weight: normal;
+    color: ${props => props.theme.colors.tertiaryText};
+  }
 `
 
 const Post = styled.li`
@@ -80,7 +85,9 @@ const Series = ({ header, series }) => {
 
   return (
     <SeriesWrapper>
-      <SeriesHeader>SERIES: {header}</SeriesHeader>
+      <SeriesHeader>
+        SERIES: {header} <span>({series.length})</span>
+      </SeriesHeader>
       <ul>
         {filteredPosts.map(post => (
           <Post currentPost={post.currentPost}>
@@ -95,7 +102,9 @@ const Series = ({ header, series }) => {
             setFold(!fold)
           }}
         >
-          {fold ? "View More" : "View Less"}
+          {fold
+            ? `View More (+${series.length - filteredPosts.length})`
+            : "View Less"}
         </ViewMore>
       )}
     </SeriesWrapper>
