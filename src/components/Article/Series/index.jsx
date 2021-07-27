@@ -23,6 +23,10 @@ const SeriesHeader = styled.h2`
   }
 `
 
+const PostWrapper = styled.ul`
+  margin-bottom: 15px;
+`
+
 const Post = styled.li`
   position: relative;
   font-size: 0.8rem;
@@ -88,14 +92,14 @@ const Series = ({ header, series }) => {
       <SeriesHeader>
         SERIES: {header} <span>({series.length})</span>
       </SeriesHeader>
-      <ul>
+      <PostWrapper>
         {filteredPosts.map(post => (
           <Post currentPost={post.currentPost}>
             <Link to={post.fields.slug}>{post.frontmatter.title}</Link>{" "}
             {post.currentPost && <AiOutlineArrowLeft />}{" "}
           </Post>
         ))}
-      </ul>
+      </PostWrapper>
       {showViewButton && (
         <ViewMore
           onClick={() => {
