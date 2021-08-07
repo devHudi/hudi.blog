@@ -4,8 +4,6 @@ date: 2021-07-26 07:00:00
 tags:
   - CSE
   - problem-solving
-  - algorithm
-  - python
 series: "Problem Solving 🤔"
 ---
 

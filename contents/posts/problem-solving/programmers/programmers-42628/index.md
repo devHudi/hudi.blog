@@ -4,11 +4,7 @@ date: 2021-08-07 02:00:00
 tags:
   - CSE
   - problem-solving
-  - algorithm
-  - python
 series: "Problem Solving 🤔"
-
-
 ---
 
 ## 1. 문제 개요
@@ -42,15 +38,15 @@ def pop_max(heap):
 
 def solution(operations):
     heap = []
-    
+
     while len(operations) > 0:
         operation = operations.pop(0)
         opcode = operation.split(" ")[0]
         operand = int(operation.split(" ")[1])
-        
+
         if opcode == "D" and len(heap) <= 0:
             continue
-        
+
         if opcode == "I":
             heapq.heappush(heap, operand)
         elif opcode == "D":

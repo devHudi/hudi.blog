@@ -4,8 +4,6 @@ date: 2021-07-21
 tags:
   - CSE
   - data-structure
-  - algorithm
-  - python
 series: "Data Structure with Python 🛠️"
 ---
 
@@ -42,15 +40,16 @@ series: "Data Structure with Python 🛠️"
 - **Chaining**
 
   각 버킷에 대응하는 링크드 리스트를 생성하고, 버킷이 링크드 리스트의 가장 앞 노드를 바라보게끔 하여 충돌을 방지하는 방법이다. 해시 충돌이 발생했을 때 그저 같은 버킷 링크드 리스트의 마지막 노드로 해당 값을 추가해주기만 하면 된다. 열린 해시법이라고도 한다.
+
 - **Open addressing**
 
   Chaining 방법과 다르게 한 버킷에는 하나의 Value 만 저장하며, 해시 충돌 시 Key 를 **재해싱(rehasing)** 하여 빈 버킷에 데이터를 저장하는 방법이다. 닫힌 해시법이라고도 한다.
 
-## 2. Chaining 방식 구현하기 
+## 2. Chaining 방식 구현하기
 
 이번엔 파이썬으로 직접 해시 테이블을 구현해보자. 사실 파이썬은 이미 딕셔너리라는 훌륭한 해시 테이블을 내장하고 있지만, 실 사용보다는 원리를 알아보는데에 목적이 있으므로 넘어가도록 한다.
 
-첫번째로 구현할 방식은 Chaining 방식이다. 
+첫번째로 구현할 방식은 Chaining 방식이다.
 
 ### 2-1. Hash 값 구하기
 
@@ -64,7 +63,7 @@ HASH_TABLE_SIZE = 13
 def hash_value(key):
 	if isinstance(key, int): # 만약 key 값이 정수형이라면
     return key % HASH_TABLE_SIZE # 해시테이블 크기로 나눈 나머지를 반환
-  
+
   # 정수형이 아닌 값의 해싱
   return int(hashlib.sha256(str(key).encode()).hexdigest(), 16) % HASH_TABLE_SIZE
 ```
@@ -77,7 +76,7 @@ def hash_value(key):
 
 ### 2-2. Node 클래스 정의
 
-Chaining 방식으로 구현을 할 것이므로 각 버킷에 대응하는 링크드 리스트를 구현해야한다. 링크드 리스트의 각 노드를 담당하는 Class 를 우선으로 구현하자. 
+Chaining 방식으로 구현을 할 것이므로 각 버킷에 대응하는 링크드 리스트를 구현해야한다. 링크드 리스트의 각 노드를 담당하는 Class 를 우선으로 구현하자.
 
 ```python
 class Node:
@@ -103,7 +102,7 @@ class ChainedHash:
         return int(hashlib.sha256(str(key).encode()).hexdigest(), 16) % self.size
 ```
 
-해시 테이블의 크기인 `size` 와 버킷으로 사용될 `table` 을 멤버 변수로 갖는 `ChainedHash` 클래스를 정의하였다. 그리고 위에서 미리 만들어둔 `hash_value` 함수를 메소드로 넣어주었다. 
+해시 테이블의 크기인 `size` 와 버킷으로 사용될 `table` 을 멤버 변수로 갖는 `ChainedHash` 클래스를 정의하였다. 그리고 위에서 미리 만들어둔 `hash_value` 함수를 메소드로 넣어주었다.
 
 > hashlib 이 import 되어있어야 한다.
 
@@ -112,7 +111,7 @@ class ChainedHash:
 ```python
 def add(self, key, value):
     hash = self.hash_value(key)
-        
+
     pointer = self.table[hash]
     while pointer != None:
         if pointer.key == key:
@@ -123,7 +122,7 @@ def add(self, key, value):
     return True
 ```
 
-`key` 를 파라미터로 받아와 해싱한다. 그 해시 값을 Index 로 버킷에 접근한다. 포인터 변수를 하나 두고, 원하는 `key` 에 해당하는 노드를 찾을 때 까지 탐색한다. 노드를 찾으면 이미 중복된 키가 존재하는 경우이므로 삭제 실패, `False` 를 반환한다. 노드를 찾지 못한 경우 키가 중복되지 않으므로 `self.table` 에 Index 로 접근해 나중에 추가된 노드가 링크드 리스트 가장 앞에 오도록 노드를 추가한다. 
+`key` 를 파라미터로 받아와 해싱한다. 그 해시 값을 Index 로 버킷에 접근한다. 포인터 변수를 하나 두고, 원하는 `key` 에 해당하는 노드를 찾을 때 까지 탐색한다. 노드를 찾으면 이미 중복된 키가 존재하는 경우이므로 삭제 실패, `False` 를 반환한다. 노드를 찾지 못한 경우 키가 중복되지 않으므로 `self.table` 에 Index 로 접근해 나중에 추가된 노드가 링크드 리스트 가장 앞에 오도록 노드를 추가한다.
 
 ### 2-5. search (탐색) 메소드 정의
 
@@ -136,7 +135,7 @@ def search(self, key):
         if pointer.key == key:
             return pointer.value
         pointer = pointer.next
-        
+
     return None
 ```
 
@@ -147,7 +146,7 @@ def search(self, key):
 ```python
 def remove(self, key):
     hash = self.hash_value(key)
-        
+
     pointer = self.table[hash]
 
     # 버킷의 첫번째 노드와 주어진 Key 가 일치하면
@@ -158,14 +157,14 @@ def remove(self, key):
 
     # 버킷의 첫번째 노드와 주어진 Key 가 일치하지 않으면
     else:
-        # 다음 노드가 None 일때까지 반복 (버킷의 마지막 노드의 직전 노드까지 반복) 
+        # 다음 노드가 None 일때까지 반복 (버킷의 마지막 노드의 직전 노드까지 반복)
         while pointer.next != None:
             # 다음 노드의 키가 주어진 key 와 일치하면 반복 탈출
             # 즉 최종적으로 pointer 는 삭제 대상 노드의 전 노드를 가리킴
             if pointer.next.key == key:
                 break
             pointer = pointer.next
-        
+
     # 다음 노드가 None 인 경우는
     # (1) 제거 대상이 버킷의 첫번째 노드 일때
     # (2) 버킷의 모든 노드를 탐색하였지만 제거대상을 찾지 못했을 때
@@ -203,9 +202,9 @@ class Status(Enum):
 
 버킷의 상태는 크게 `점유됨 (OCCUPIED)`, `비어있음 (EMPTY)`, `삭제됨 (DELETED)` 으로 구분한다. 삭제됨 상태를 굳이 구분한 이유는 따로 있다.
 
-데이터를 추가하는 중 3번째 버킷에서 충돌이 발생하여, 재해싱 후 4번째 버킷에 데이터를 등록한 상황을 가정해보자. 그리고 그 이후 3번째 버킷이 삭제되었다고 해보자. 이 때 `DELETED` 상태가 따로 정의되지 않은 상황이라면, 3번째 버킷에는 `EMPTY` 상태를 지정할 수 밖에 없다. 이런 경우 4번째 버킷을 검색할 때, 최초 해시값은 3번째 버킷과 일치할 텐데, 해당 버킷은 상태가 `EMPTY` 일테고 데이터가 없다고 판단되어 검색은 실패되고 종료될 것 이다. 
+데이터를 추가하는 중 3번째 버킷에서 충돌이 발생하여, 재해싱 후 4번째 버킷에 데이터를 등록한 상황을 가정해보자. 그리고 그 이후 3번째 버킷이 삭제되었다고 해보자. 이 때 `DELETED` 상태가 따로 정의되지 않은 상황이라면, 3번째 버킷에는 `EMPTY` 상태를 지정할 수 밖에 없다. 이런 경우 4번째 버킷을 검색할 때, 최초 해시값은 3번째 버킷과 일치할 텐데, 해당 버킷은 상태가 `EMPTY` 일테고 데이터가 없다고 판단되어 검색은 실패되고 종료될 것 이다.
 
-즉, DELETED 상태는 *'이 버킷은 비어있긴 한데, 해시 충돌로 재해싱되어 다른 버킷에 저장된 데이터가 있으니까 선형탐사해봐'* 라고 전달하는 것과 동일하다.
+즉, DELETED 상태는 _'이 버킷은 비어있긴 한데, 해시 충돌로 재해싱되어 다른 버킷에 저장된 데이터가 있으니까 선형탐사해봐'_ 라고 전달하는 것과 동일하다.
 
 ### 3-2. Bucket 클래스 정의
 
@@ -234,7 +233,7 @@ class OpenHash:
     def __init__(self, size):
         self.size = size
         self.table = [Bucket()] * self.size
-    
+
     def hash_value(self, key):
         if isinstance(key, int):
             return key % self.size
@@ -288,7 +287,7 @@ def search(self, key):
 
 `search_node` 메소드를 살펴보자. 일단, 버킷의 크기만큼 반복한다. 그리고 `pointer` 가 최초로 가리키는 버킷은 최초 해시값에 해당하는 버킷일 것 이다. 만약 그 버킷이 `EMPTY` 라면, 더 검색해볼 필요 없이 `None` 을 반환하면 된다. 그렇지 않고, 버킷이 점유되어 있으며 `key` 까지 일치한다면 검색에 성공하였으므로 해당하는 버킷을 반환한다.
 
-만약 (1) 버킷이 할당되어 있지만 `key` 는 일치하지 않을때 (2) 지금 가리키고 있는 버킷은 삭제되었지만, 재해싱되어 다른 버킷에 데이터가 있는 경우 ( `stat == Status.DELETED` ) 일때는 재해싱하여 선형탐사를 해야한다. 이 때, 최대 *버킷의 크기 - 1* 번 선형탐사를 하게 되고, `elif` 절의 조건과 만족하게 되면 해당 버킷을 반환한다.
+만약 (1) 버킷이 할당되어 있지만 `key` 는 일치하지 않을때 (2) 지금 가리키고 있는 버킷은 삭제되었지만, 재해싱되어 다른 버킷에 데이터가 있는 경우 ( `stat == Status.DELETED` ) 일때는 재해싱하여 선형탐사를 해야한다. 이 때, 최대 _버킷의 크기 - 1_ 번 선형탐사를 하게 되고, `elif` 절의 조건과 만족하게 되면 해당 버킷을 반환한다.
 
 ### 3-6. add (추가) 메소드 정의
 
@@ -306,20 +305,20 @@ def add(self, key, value):
             return True
         hash = self.rehash_value(hash)
         pointer = self.table[hash]
-        
+
     return False
 ```
 
 먼저 `search` 메소드로 이미 같은 `key` 를 가지고 있는 버킷이 있는지 검색한다. 중복된 `key` 가 없다면 추가를 진행한다.
 
-추가할 때도 `search_node` 메소드와 마찬가지로 충돌 발생 시 (버킷이 `EMPTY` 혹은 `DELETED` 가 아닌 경우) 재해싱하여 비어있는 버킷에 값을 할당하는 작업을 진행한다. 만약 해시 테이블의 모든 원소에 추가 시도를 하였으나, 실패한 경우 버킷 용량이 부족한 것으로 판단되어 `False` 를 반환한다. 
+추가할 때도 `search_node` 메소드와 마찬가지로 충돌 발생 시 (버킷이 `EMPTY` 혹은 `DELETED` 가 아닌 경우) 재해싱하여 비어있는 버킷에 값을 할당하는 작업을 진행한다. 만약 해시 테이블의 모든 원소에 추가 시도를 하였으나, 실패한 경우 버킷 용량이 부족한 것으로 판단되어 `False` 를 반환한다.
 
 ### 3-7. remove (삭제) 메소드 정의
 
 ```python
 def remove(self, key):
     pointer = self.search_node(key)
-        
+
     # 등록되지 않은 키의 삭제는 실패
     if pointer is None:
         return False
