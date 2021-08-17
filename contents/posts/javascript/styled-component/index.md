@@ -4,7 +4,6 @@ date: 2018-07-09
 tags:
   - front-end
   - react
-  - tutorial
 ---
 
 > 이전 블로그 (https://hudi.kr) 에서 이전해온 글 입니다.
