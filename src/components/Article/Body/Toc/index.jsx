@@ -17,11 +17,12 @@ const TocWrapper = styled.div`
   left: 100%;
 
   & > div {
+    padding-right: 5px;
     padding-left: 1rem;
     margin-left: 3rem;
     position: relative;
     width: 15rem;
-    max-height: 70%;
+    max-height: 468px;
     overflow-y: auto;
 
     ::-webkit-scrollbar {
@@ -111,6 +112,7 @@ const Toc = ({ items, articleOffset }) => {
         <div>
           {items.map((item, i) => (
             <ParagraphTitle
+              key={i}
               subtitle={item.tagName === "H3"}
               active={i === active}
               onClick={() => handleClickTitle(i)}
