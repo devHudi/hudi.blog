@@ -4,7 +4,7 @@ date: 2021-09-11 01:00:00
 tags:
   - CSE
   - algorithm
-series: "Algorithm with Python 🛠️"
+series: "알고리즘 공부"
 ---
 
 > 본 포스트는 저자가 학습하며 작성한 글 이기 때문에 틀린 내용이 있을 수 있습니다. 지적은 언제나 환영입니다.

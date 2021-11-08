@@ -4,7 +4,7 @@ date: 2021-07-25
 tags:
   - CSE
   - data-structure
-series: "Data Structure with Python 🛠️"
+series: "파이썬과 함께하는 자료구조"
 ---
 
 > 본 포스트는 [Do it! 자료구조와 함께 배우는 알고리즘 입문 : 파이썬 편](https://book.naver.com/bookdb/book_detail.nhn?bid=16419115)의 일부를 참고하여 작성하였습니다.
