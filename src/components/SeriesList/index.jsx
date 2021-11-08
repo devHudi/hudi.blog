@@ -35,11 +35,11 @@ const SeriesInform = styled.div`
 `
 
 const Date = styled.p`
-  font-size: 0.9rem;
+  font-size: 14.4px;
 `
 
 const PostCount = styled.p`
-  font-size: 0.9rem;
+  font-size: 14.4px;
 `
 
 const checkIsScrollAtBottom = () => {
@@ -78,7 +78,7 @@ const SeriesList = ({ seriesList }) => {
           <>
             <SeriesWrapper>
               <Title size="bg">
-                <Link to={`${series.posts[series.posts.length - 1].slug}`}>
+                <Link to={`/series/${_.replace(series.name, /\s/g, "-")}`}>
                   {series.name}
                 </Link>
               </Title>
@@ -90,7 +90,7 @@ const SeriesList = ({ seriesList }) => {
             </SeriesWrapper>
 
             {seriesCount - 1 !== i && seriesList.length - 1 !== i && (
-              <Divider mt="3rem" mb="2rem" />
+              <Divider mt="48px" mb="32px" />
             )}
           </>
         )

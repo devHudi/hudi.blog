@@ -5,10 +5,12 @@ import ProfileImage from "images/profile.png"
 
 import {
   FaGithub,
+  FaKaggle,
   FaFacebook,
   FaLinkedin,
   FaInstagram,
   FaLink,
+  FaEnvelope,
 } from "react-icons/fa"
 
 import { description, author, links } from "../../../blog-config"
@@ -24,9 +26,9 @@ const BioWrapper = styled.div`
 
 const Profile = styled.div`
   flex: 0 0 auto;
-  margin-right: 1rem;
-  width: 8rem;
-  height: 8rem;
+  margin-right: 16px;
+  width: 128px;
+  height: 128px;
   border-radius: 999px;
   background-image: url(${ProfileImage});
   background-size: cover;
@@ -34,27 +36,27 @@ const Profile = styled.div`
 `
 
 const Author = styled.div`
-  margin-bottom: 0.3rem;
-  font-size: 1.5rem;
+  margin-bottom: 4.8px;
+  font-size: 24px;
   font-weight: 700;
   color: ${props => props.theme.colors.text};
 `
 
 const Description = styled.div`
-  margin-bottom: 0.7rem;
+  margin-bottom: 11.2px;
   line-height: 1.5;
-  font-size: 1rem;
+  font-size: 16px;
   color: ${props => props.theme.colors.secondaryText};
 `
 
 const LinksWrapper = styled.div`
   & a {
-    margin-right: 0.6rem;
+    margin-right: 9.6px;
   }
 
   & svg {
-    width: 1.6rem;
-    height: 1.6rem;
+    width: 25.6px;
+    height: 25.6px;
     cursor: pointer;
   }
 
@@ -71,14 +73,14 @@ const LinksWrapper = styled.div`
 const Link = ({ link, children }) => {
   if (!link) return null
   return (
-    <a href={link} target="_blank">
+    <a href={link} target="_blank" rel="noreferrer">
       {children}
     </a>
   )
 }
 
 const Bio = () => {
-  const { github, instagram, facebook, linkedIn, etc } = links
+  const { github, kaggle, instagram, facebook, linkedIn, email, etc } = links
 
   return (
     <BioWrapper id="bio">
@@ -90,6 +92,9 @@ const Bio = () => {
           <Link link={github}>
             <FaGithub />
           </Link>
+          <Link link={kaggle}>
+            <FaKaggle />
+          </Link>
           <Link link={instagram}>
             <FaInstagram />
           </Link>
@@ -98,6 +103,9 @@ const Bio = () => {
           </Link>
           <Link link={linkedIn}>
             <FaLinkedin />
+          </Link>
+          <Link link={email}>
+            <FaEnvelope />
           </Link>
           <Link link={etc}>
             <FaLink />

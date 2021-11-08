@@ -1,6 +1,5 @@
 import React from "react"
 import styled from "styled-components"
-import { Link } from "gatsby"
 
 import { author } from "../../../../blog-config"
 
@@ -8,24 +7,24 @@ import Divider from "components/Divider"
 import TagList from "components/TagList"
 
 const Wrapper = styled.div`
-  margin-top: 2rem;
+  margin-top: 32px;
   @media (max-width: 768px) {
     padding: 0 15px;
   }
 `
 
 const ArticleTitle = styled.h1`
-  margin-bottom: 1.6rem;
+  margin-bottom: 25.6px;
   line-height: 1.2;
-  font-size: 2.8rem;
+  font-size: 44.8px;
   font-weight: 700;
   color: ${props => props.theme.colors.text};
   word-break: break-all;
 `
 
 const Information = styled.div`
-  margin-bottom: 2rem;
-  font-size: 1rem;
+  margin-bottom: 32px;
+  font-size: 16px;
 `
 
 const Author = styled.span`
@@ -38,7 +37,7 @@ const Date = styled.span`
   color: ${props => props.theme.colors.secondaryText};
 `
 
-const Header = ({ title, date, update, tags, minToRead }) => {
+const Header = ({ title, date, tags, minToRead }) => {
   return (
     <Wrapper>
       <ArticleTitle> {title} </ArticleTitle>
