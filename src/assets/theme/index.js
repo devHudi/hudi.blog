@@ -15,6 +15,7 @@ export const light = {
     headerBackground: "rgba(255, 255, 255, 0.85)",
     headerShadow: "rgba(0, 0, 0, 0.08)",
     inlineCodeBackground: "#e9ecef",
+    inlineCodeBackgroundDarker: "#ced4da",
     tagBackground: "#f1f3f5",
     selectedTagBackground: "#495057",
     hoveredTagBackground: "#dee2e6",
@@ -31,6 +32,7 @@ export const light = {
     blockQuoteBackground: "#f1f3f5",
     textFieldBorder: "#ced4da",
     textFieldActivatedBorder: "#adb5bd",
+    tableBackground: "#f1f3f5",
   },
 }
 
@@ -51,6 +53,7 @@ export const dark = {
     headerBackground: "rgba(33, 37, 41, 0.85)",
     headerShadow: "rgba(255, 255, 255, 0.08)",
     inlineCodeBackground: "#495057",
+    inlineCodeBackgroundDarker: "#343a40",
     tagBackground: "#343a40",
     selectedTagBackground: "#e9ecef",
     hoveredTagBackground: "#495057",
@@ -67,5 +70,6 @@ export const dark = {
     blockQuoteBackground: "#343a40",
     textFieldBorder: "#495057",
     textFieldActivatedBorder: "#868e96",
+    tableBackground: "#292e33",
   },
 }
