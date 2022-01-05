@@ -11,6 +11,7 @@
     "gatsby-plugin-catch-links": "^3.5.0",
     "gatsby-plugin-feed": "^2.7.0",
     "gatsby-plugin-google-fonts": "^1.0.1",
+    "gatsby-plugin-google-gtag": "^4.4.0",
     "gatsby-plugin-manifest": "^2.5.2",
     "gatsby-plugin-offline": "^3.3.3",
     "gatsby-plugin-react-helmet": "^4.5.0",
