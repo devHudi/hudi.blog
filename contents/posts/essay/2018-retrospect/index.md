@@ -3,6 +3,7 @@ title: "2018년, 나는 어떤 21살이었나."
 date: 2019-01-01
 tags:
   - essay
+  - retrospect
 ---
 
 > 이전 [Medium에 작성한 글](https://medium.com/@devHudi/2018%EB%85%84-%EB%82%98%EB%8A%94-%EC%96%B4%EB%96%A4-21%EC%82%B4%EC%9D%B4%EC%97%88%EB%82%98-6b31c1f9dfc0)을 이전한 글 입니다.
