@@ -89,6 +89,7 @@ module.exports = {
               loading: "lazy",
               wrapperStyle: "margin-bottom: 1rem;",
               quality: 100,
+              showCaptions: true,
             },
           },
           {
