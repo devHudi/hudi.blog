@@ -2,7 +2,7 @@
 title: "인후라이프 개발일지"
 date: 2018-07-05
 tags:
-  - dev-log
+  - 개발일지
 series: "개발 일지"
 ---
 

@@ -2,8 +2,8 @@
 title: "[DS] 스택 (Stack), 큐 (Queue)"
 date: 2021-07-25
 tags:
-  - CSE
-  - data-structure
+  - 컴퓨터공학
+  - 자료구조
 series: "파이썬과 함께하는 자료구조"
 ---
 

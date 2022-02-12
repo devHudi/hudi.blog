@@ -2,8 +2,8 @@
 title: "[ALG] DFS/BFS (깊이/너비 우선탐색)"
 date: 2021-09-07 01:00:00
 tags:
-  - CSE
-  - algorithm
+  - 컴퓨터공학
+  - 알고리즘
 series: "알고리즘 공부"
 ---
 

@@ -2,8 +2,8 @@
 title: "[ALG] 시간복잡도와 빅오 (Big-O) 표기법"
 date: 2021-09-11 01:00:00
 tags:
-  - CSE
-  - algorithm
+  - 컴퓨터공학
+  - 알고리즘
 series: "알고리즘 공부"
 ---
 

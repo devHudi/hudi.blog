@@ -3,8 +3,8 @@ title: "Surge.sh 로 무료로 정적 웹 어플리케이션 배포하기"
 date: 2018-10-18
 update: 2018-10-18
 tags:
-  - deploy
-  - front-end
+  - 배포
+  - 프론트엔드
 ---
 
 > 이전 블로그 (https://hudi.kr) 에서 이전해온 글 입니다.

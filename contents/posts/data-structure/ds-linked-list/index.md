@@ -2,8 +2,8 @@
 title: "[DS] 링크드 리스트 (Linked List)"
 date: 2021-08-04 03:00:00
 tags:
-  - CSE
-  - data-structure
+  - 컴퓨터공학
+  - 자료구조
 series: "파이썬과 함께하는 자료구조"
 ---
 

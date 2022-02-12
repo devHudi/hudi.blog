@@ -2,7 +2,7 @@
 title: "ngrok - 포트포워딩 없이 외부에 로컬서버 공개하기"
 date: 2021-11-08 00:00:00
 tags:
-  - dev-tool
+  - 도구
 ---
 
 ![](./ngrok.jpeg)

@@ -2,8 +2,8 @@
 title: "[DS] 해시테이블 (Hash Table)"
 date: 2021-07-21
 tags:
-  - CSE
-  - data-structure
+  - 컴퓨터공학
+  - 자료구조
 series: "파이썬과 함께하는 자료구조"
 ---
 

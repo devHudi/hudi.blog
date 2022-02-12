@@ -2,7 +2,7 @@
 title: "이론과 실습을 통해 이해하는 Docker 기초"
 date: 2022-02-05 00:00:00
 tags:
-  - devops
+  - 데브옵스
   - docker
 ---
 

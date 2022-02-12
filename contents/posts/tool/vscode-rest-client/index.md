@@ -2,11 +2,13 @@
 title: "REST Client - VS Code 에서 경험하는 가벼운 REST API 문서화와 테스트"
 date: 2022-02-03 21:50:00
 tags:
-  - tool
+  - 도구
 ---
 
 ![](./thumbnail.png)
+
 ## 1. REST Client
+
 REST Client 는 VS Code 의 확장 프로그램으로 Postman 과 같은 외부 API 테스팅 프로그램을 사용하지 않고도, 간단한 파일을 작성하여 VS Code 내부에서 API 테스트를 할 수 있는 기능을 제공한다. 또한 Swagger 와 같은 복잡한 API 문서화 프레임워크를 사용하지 않고도, 쉽게 API를 문서화할 수 있다.
 
 Swagger 등으로 API를 문서화 하는 경우 문서화만을 위한 코드가 기존 코드에 추가되어 가독성을 해치는 문제가 있는데, REST Client 를 사용하면 코드에 영향을 주지 않고 API 문서화와 테스트를 동시에 할 수 있다.
@@ -20,6 +22,7 @@ VS Code 의 확장 프로그램 메뉴에서 **‘REST Client’** 를 검색하
 설치가 완료되면 세팅은 끝이다.
 
 ## 2. HTTP 요청 작성방법 훑어보기
+
 REST Client 는 `.http` 또는 `.rest` 를 확장자로 갖는 파일에서 HTTP 요청을 작성하고 파일 내부에서 요청을 실행할 수 있다.
 
 요청은 **HTTP 1.1 표준**에 따라 아래와 같이 작성한다. 본 포스트에서는 테스트를 위해 **[jsonplaceholder.typicode.com](https://jsonplaceholder.typicode.com)** 라는 Fake API 서비스를 사용한다.
@@ -27,6 +30,7 @@ REST Client 는 `.http` 또는 `.rest` 를 확장자로 갖는 파일에서 HTTP
 실습을 위해 적당한 디렉토리에 `api.http` 파일을 생성하고, 아래 내용을 따라해보자.
 
 ### 2-1. GET 요청 작성하기
+
 요청을 작성하기 위해서는 요청의 메소드와 URI 를 가장 먼저 작성해야한다. 가장 간단한 `GET` 요청을 먼저 작성해보자. 아래와 같이 `api.http` 파일에 작성한다.
 
 ```http
@@ -61,7 +65,7 @@ GET https://jsonplaceholder.typicode.com/posts/1 HTTP/1.1
 ###
 ```
 
-그리고 그 아래에 하단의 POST 요청을 작성하자. 
+그리고 그 아래에 하단의 POST 요청을 작성하자.
 
 ```http
 POST https://jsonplaceholder.typicode.com/posts HTTP/1.1
@@ -76,6 +80,7 @@ Content-Type: application/json; charset=UTF-8
 `GET` 요청과 다르게 하단에, Content-type 이라는 **Header** 와 **Request Body** 가 추가된 것을 볼 수 있다. Header 와 Body 의 더 자세한 내용은 글 아래에서 다루니 일단 작성 형식만 눈에 익혀두자.
 
 ### 2-3. PUT/PATCH 요청 작성하기
+
 ```http
 ### 업데이트 요청
 PUT https://jsonplaceholder.typicode.com/posts/1 HTTP/1.1
@@ -102,13 +107,16 @@ Content-Type: application/json; charset=UTF-8
 또한 위 예시처럼 `###` 구분자 뒤에 요청에 대한 설명을 주석과 같이 작성하면, 해당 요청이 어떤 요청인지 다른사람도 쉽게 알 수 있을 것 이다.
 
 ### 2-4. DELETE 요청
+
 ```http
 ### 삭제 요청
 DELETE https://jsonplaceholder.typicode.com/posts/1 HTTP/1.1
 ```
 
 ## 3. 상세 작성 가이드
+
 ### 3-1. 요청 헤더 (Request Header)
+
 ```http
 POST https://jsonplaceholder.typicode.com/posts HTTP/1.1
 ```
@@ -126,9 +134,11 @@ Authorization: bearer abcdef...
 ```
 
 ### 3-2. 요청 바디 (Request Body)
+
 요청 바디는 요청 라인 혹은 요청 헤더로부터 1개의 개행 간격을 두고 작성한다. `Content-Type` 에 따라 Body 의 형태도 달라질 수 있다.
 
 #### JSON Body
+
 ```http
 (생략)
 Content-Type: application/json
@@ -139,6 +149,7 @@ Content-Type: application/json
 ```
 
 #### XML
+
 ```http
 (생략)
 Content-Type: application/xml
@@ -150,6 +161,7 @@ Content-Type: application/xml
 ```
 
 #### Multipart
+
 ```http
 (생략)
 Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
@@ -167,6 +179,7 @@ Content-Type: image/png
 ```
 
 #### Form Data (x-www-form-urlencode)
+
 ```http
 (생략)
 Content-Type: application/x-www-form-urlencoded
@@ -176,14 +189,16 @@ name=foo
 ```
 
 ### 3-3. 쿼리 스트링 (Query String)
+
 ```http
-GET https://jsonplaceholder.typicode.com/comments?postId=1 HTTP/1.1 
+GET https://jsonplaceholder.typicode.com/comments?postId=1 HTTP/1.1
 ```
 
 요청 라인에 위와 같이 쿼리 스트링을 포함하여 요청을 전송할 수 있다.
 
 ### 3-4. 파일 변수
-`@` 를 사용하여 파일 내에서 변수를 정의할 수 있다.  정의된 변수의 값에 접근할 때는 `{{변수명}}` 형태로 작성해주면 된다.
+
+`@` 를 사용하여 파일 내에서 변수를 정의할 수 있다. 정의된 변수의 값에 접근할 때는 `{{변수명}}` 형태로 작성해주면 된다.
 
 아래와 같이 Base URL 이나 테스트용 토큰을 변수로 따로 분리하는 등의 활용이 가능하다.
 
@@ -198,6 +213,7 @@ Authorization: bearer {{jwt}}
 만약 변수가 정의되지 않은 경우 `{{baseUrl}}` 와 같은 형식이 그대로 평문으로 사용되는 점 유의하자.
 
 ### 3-5. 환경 변수
+
 `.vscode/settings.json` 에 REST Client 에서 사용할 수 있는 환경변수를 정의할 수 있다. 여러 환경을 정의할 수 있고, 환경을 전환할 수 있다.
 
 `.vscode` 라는 디렉토리를 생성하고 `settings.json` 파일을 생성하여 아래와 같이 작성 해보자.
@@ -248,6 +264,7 @@ development 를 선택하여 환경을 전환하고, Send Request 를 클릭하�
 우리가 환경변수에 정의한 값이 Request Body 에 실려 전송된 모습을 확인할 수 있다.
 
 ### 3-6. 요청 변수
+
 다른 요청의 응답을 변수에 담아 다른 요청에서 사용할 수 있다. 포스트 리스트를 불러오고, 리스트 첫번째 포스트의 `title` 과 Response Header 의 `content-type` 을 그대로 `POST` 요청으로 보내는 예제를 작성해보자.
 
 `# @name variableName` 형태로 해당 요청의 응답을 담을 변수를 정의할 수 있다. 그리고 해당 변수를 참조하는 요청은 이전에 참조하는 요청이 이미 실행된 상태여야만 실행이 가능하다.
@@ -280,9 +297,8 @@ GET https://jsonplaceholder.typicode.com/posts HTTP/1.1
 // 포스트 리스트를 가져옵니다.
 ```
 
-
-
 ## 4. 유용한 기능
+
 ### 4-1. 요청 내역 확인하기
 
 윈도우의 경우 `Ctrl + Alt + H` , 맥의 경우 `Cmd + Alt + H` 단축키를 사용하면 최근에 실행한 요청 내역을 확인할 수 있다.
@@ -290,11 +306,13 @@ GET https://jsonplaceholder.typicode.com/posts HTTP/1.1
 ![](./history.png)
 
 ### 4-2. Response 저장하기
+
 Reponse 를 `.http` 파일로 저장할 수 있다. Response 탭의 우측 상단의 저장 아이콘을 클릭하여 저장하자.
 
 ![](./save.png)
 
 ### 4-3. 코드 스니펫 생성하기
+
 생성할 요청 HTTP 부분을 드래그하고 우클릭 후 **Generate Code Snippet** 을 클릭하여 여러 언어의 다양한 라이브러리로 요청 코드를 생성할 수 있다.
 
 ![](./snippet.png)
@@ -310,6 +328,7 @@ Reponse 를 `.http` 파일로 저장할 수 있다. Response 탭의 우측 상�
 사진과 같이 Javascript 의 Axios 라이브러리로 요청 코드 스니펫이 생성되었다.
 
 ## 5. 마치며
+
 규모가 큰 프로젝트의 경우 Swagger 같이 다양한 기능을 제공하는 API 문서화 프레임워크와 Postman, Thunder Client 와 같은 API 테스팅 도구를 사용하는 것이 적합할 것이다.
 
 하지만 MVP 를 개발하거나, 소규모 사이드 프로젝트를 진행할때에는 REST Client 를 사용하여 간단하게 문서화와 테스트를 동시에 관리하는 것이 좋아보인다.

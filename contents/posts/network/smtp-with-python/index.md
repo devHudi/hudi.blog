@@ -2,7 +2,7 @@
 title: "파이썬 소켓으로 직접 구현하는 SMTP 프로토콜"
 date: 2021-11-20
 tags:
-  - network
+  - 네트워크
   - tcp
   - python
   - socket
@@ -47,7 +47,7 @@ C: To: Alice Example <alice@example.com>
 C: Cc: theboss@example.com
 C: Date: Tue, 15 January 2008 16:02:43 -0500
 C: Subject: Test message
-C: 
+C:
 C: Hello Alice.
 C: This is a test message with 5 header fields and 4 lines in the message body.
 C: Your friend,
@@ -72,7 +72,7 @@ S: 221 Bye
 
 이후 입력되는 모든 문자열은 메일 본문 내용에 해당되며, 마지막줄에 단독점 ( `.` ) 을 입력하면, 메일 전송이 시작된다. 이때, 헤더와 본문 구분을 위해 사이에 개행을 하나 삽입 해야하며, Data 의 헤더는 생략이 가능하다.
 
-## 3. MX 레코드 알아내기 
+## 3. MX 레코드 알아내기
 
 DNS 에는 여러 레코드가 존재하며, 그 중 메일서버의 주소를 나타내는 **MX 레코드**가 존재한다. 임의 도메인으로 메일을 전송하기 위해서는 도메인의 DNS 레코드를 조회하여, MX 레코드를 알아내야 한다. Windows, Linux, Mac OS 에서 지원하는 `nslookup` 이라는 명령이 존재한다. 이 명령으로 특정 도메인의 DNS 레코드를 조회할 수 있다. 터미널을 열어 아래와 같이 명령을 입력해서 `naver.com` 의 DNS 레코드를 조회해보자.
 
@@ -147,11 +147,11 @@ This is test mail.
 Connection closed by foreign host.
 ```
 
-**DATA** 를 입력해 메일 헤더와 본문 입력을 시작한다. 응답코드 `354` 가 수신되었으면 계속 입력하면 된다. 마지막으로 단독점을 입력해 메일 작성을 마무리 하고 메일을 전송했다. 
+**DATA** 를 입력해 메일 헤더와 본문 입력을 시작한다. 응답코드 `354` 가 수신되었으면 계속 입력하면 된다. 마지막으로 단독점을 입력해 메일 작성을 마무리 하고 메일을 전송했다.
 
 ![](./2.png)
 
- 위와 같이 성공적으로 메일이 전송된 모습을 확인할 수 있다. 이제 직접 Python 으로 구현해보자.
+위와 같이 성공적으로 메일이 전송된 모습을 확인할 수 있다. 이제 직접 Python 으로 구현해보자.
 
 ## 5. 소켓으로 구현하기
 
@@ -176,12 +176,12 @@ msg = client_socket.recv(BUF_SIZE).decode()
 print(msg)
 
 # HELO 전송
-client_socket.sendall('HELO mail.nefacility.com\r\n'.encode()) 
-msg = client_socket.recv(BUF_SIZE).decode() # 데이터 수신 
+client_socket.sendall('HELO mail.nefacility.com\r\n'.encode())
+msg = client_socket.recv(BUF_SIZE).decode() # 데이터 수신
 print(msg)
 
 # MAIL FROM 전송
-client_socket.sendall('MAIL FROM:<devhudi@gmail.com>\r\n'.encode()) 
+client_socket.sendall('MAIL FROM:<devhudi@gmail.com>\r\n'.encode())
 msg = client_socket.recv(BUF_SIZE).decode()
 print(msg)
 

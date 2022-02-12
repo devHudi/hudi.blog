@@ -2,7 +2,7 @@
 title: "ES6 문법으로 다시 시작하는 자바스크립트"
 date: 2018-07-05
 tags:
-  - front-end
+  - 프론트엔드
   - javascript
 ---
 

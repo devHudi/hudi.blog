@@ -3,7 +3,7 @@ title: "채팅서비스를 구현하며 배워보는 Websocket 원리 (feat. nod
 date: 2022-01-27 19:00:00
 tags:
   - websocket
-  - network
+  - 네트워크
   - javascript
   - node.js
   - express
@@ -37,7 +37,7 @@ Websocket 이 사용되기 전에는 HTTP 위에서 실시간성을 보장하기
 
 HTTP 폴링 방식과 비슷하지만, 서버가 요청에 대한 연결을 즉시 닫고 응답하지 않고, 일정시간동안 연결을 열어두는 기법이다. 연결이 열려있는 동안 서버가 클라이언트로 제공할 데이터가 발생하면 전송할 수 있어, 그냥 폴링 방식보다는 오버헤드가 비교적 적다.
 
-그럼에도 불구하고 메세지 양 자체가 많을 경우 일반 폴링과 비교하여 큰 성능 향상은 없다. 
+그럼에도 불구하고 메세지 양 자체가 많을 경우 일반 폴링과 비교하여 큰 성능 향상은 없다.
 
 #### HTTP Streaming
 
@@ -89,6 +89,7 @@ Sec-WebSocket-Protocol: chat
 클라이언트 혹은 서버 양측 누구나 연결을 종료할 수 있다. 연결 종료를 원하는 측이 Close Frame 을 상대쪽으로 전송하면 된다.
 
 ## 2. 프로젝트 생성
+
 ```bash
 $ npm init
 $ npm i express ws
@@ -99,7 +100,9 @@ $ npm i express ws
 > 본 포스팅에서는 Websocket 사용에만 집중하기 위해 별도의 프론트엔드 라이브러리는 사용하지 않는다.
 
 ## 3. Websocket 통신 맛보기
+
 ### 3-1. 클라이언트 코드 생성
+
 프로젝트 루트 디렉토리에서 `public` 이라는 디렉토리를 생성하고 아래와 같이 `index.html` 파일을 작성한다.
 
 ```html
@@ -117,17 +120,18 @@ $ npm i express ws
 ```
 
 ### 3-2. 정적파일 서빙
-이 정적파일을 서빙할 node.js 서버도 생성해주자. 이 서버는 HTML 파일을 서빙함과 동시에  웹소켓 서버역할을 겸하게 될 것이다.
+
+이 정적파일을 서빙할 node.js 서버도 생성해주자. 이 서버는 HTML 파일을 서빙함과 동시에 웹소켓 서버역할을 겸하게 될 것이다.
 
 ```js
-const express = require("express");
-const app = express();
+const express = require("express")
+const app = express()
 
-app.use(express.static("public"));
+app.use(express.static("public"))
 
 app.listen(8000, () => {
-  console.log(`Example app listening on port 8000`);
-});
+  console.log(`Example app listening on port 8000`)
+})
 ```
 
 루트 디렉토리에 `app.js` 라는 파일을 생성하고, 위와 같이 코드를 작성하자. 접속 포트는 `8000` 번 이다. 그리고 아래의 명령으로 서버를 실행한다.
@@ -143,25 +147,26 @@ $ node app.js
 > nodemon, pm2 등을 사용해 파일이 수정될 때 마다 node.js 서버를 재시작 해주는 방법을 사용하면 조금 더 편하게 실습할 수 있다.
 
 ### 3-3. Websocket 서버 열기
-프로젝트 생성 시 미리 설치해둔 `ws` 모듈을 아래와 같이 불러온다. 
+
+프로젝트 생성 시 미리 설치해둔 `ws` 모듈을 아래와 같이 불러온다.
 
 ```js
-const { WebSocketServer } = require("ws");
+const { WebSocketServer } = require("ws")
 ```
 
 그다음 아래와 같이 웹소켓 서버를 열어준다. 접속 포트는 `8001` 번이다.
 
 ```js
 // 웹소켓 서버 생성
-const wss = new WebSocketServer({ port: 8001 });
+const wss = new WebSocketServer({ port: 8001 })
 
 // 웹소켓 서버 연결 이벤트 바인드
-wss.on("connection", (ws) => {
+wss.on("connection", ws => {
   // 데이터 수신 이벤트 바인드
-  ws.on("message", (data) => {
-    console.log(`Received from user: ${data}`);
-  });
-});
+  ws.on("message", data => {
+    console.log(`Received from user: ${data}`)
+  })
+})
 ```
 
 `wss` 은 웹소켓 서버를 의미하고, 콜백 함수로 받아온 `ws` 는 연결된 클라이언트를 의미한다.
@@ -169,16 +174,17 @@ wss.on("connection", (ws) => {
 위 코드는 `wss` 에 연결 이벤트를 바인딩하고, 연결된 클라이언트가 메세지를 보내면 그 내용을 그대로 콘솔에 출력하는 동작을 수행한다.
 
 ### 3-4. 클라이언트에서 데이터 전송
-웹소켓 서버가 제대로 생성되었는지, 그리고 클라이언트로부터 제대로 메세지를 수신하는지 확인하기 위해서 아래와 같이 클라이언트 HTML 파일을 수정해보자. 
+
+웹소켓 서버가 제대로 생성되었는지, 그리고 클라이언트로부터 제대로 메세지를 수신하는지 확인하기 위해서 아래와 같이 클라이언트 HTML 파일을 수정해보자.
 
 head 태그 안에는 아래와 같이 스크립트 생성한다.
 
 ```html
 <script>
-  const ws = new WebSocket("ws://localhost:8001");
+  const ws = new WebSocket("ws://localhost:8001")
 
   function sayHi() {
-    ws.send("Hello"); // 서버에 데이터 전송
+    ws.send("Hello") // 서버에 데이터 전송
   }
 </script>
 ```
@@ -195,42 +201,46 @@ body 태그 안에는 아래와 같이 버튼 추가해서 버튼을 클릭하�
 ![](./node-01.png)
 
 ### 3-5. 서버의 응답
+
 클라이언트가 보낸 메세지를 그대로 다시 클라이언트에게 보내주는 코드를 작성해보자. 서버 코드를 아래와 같이 수정한다.
 
 ```js
 // 웹소켓 서버 실행
-wss.on("connection", (ws) => {
+wss.on("connection", ws => {
   // 데이터 수신 이벤트 바인드
-  ws.on("message", (data) => {
-    console.log(`Received from user: ${data}`);
-    ws.send(`Received ${data}`); // 서버의 답장
-  });
-});
+  ws.on("message", data => {
+    console.log(`Received from user: ${data}`)
+    ws.send(`Received ${data}`) // 서버의 답장
+  })
+})
 ```
 
 이렇게 `send` 메소드를 사용하여 클라이언트에게 메세지를 전송할 수 있다.
 
 ### 3-6. 접속 환영 메세지
+
 이번엔 웹소켓 서버에 연결된 클라이언트에 서버가 먼저 환영 메세지를 보내보자. 아래와 같이 서버 코드를 수정한다.
 
 ```js
 wss.on("connection", (ws, request) => {
   // request: 클라이언트로 부터 전송된 http GET 리퀘스트 정보
 
-  ws.on("message", (data) => {
-    console.log(`Received from user: ${data}`);
-    ws.send(`Received ${data}`);
-  });
+  ws.on("message", data => {
+    console.log(`Received from user: ${data}`)
+    ws.send(`Received ${data}`)
+  })
 
-  ws.send(`Hello, ${request.socket.remoteAddress}`);
+  ws.send(`Hello, ${request.socket.remoteAddress}`)
   // 연결 직후 해당 클라이언트로 데이터 전송
-});
+})
 ```
 
 이렇듯, 웹소켓은 클라이언트의 요청 없이도 능동적으로 먼저 클라이언트에게 데이터를 전송할 수 있는 **전이중통신 (Full-Duplex Communication)** 을 지원한다. 따라서 HTTP 와 다르게 요청과 응답을 따로 구분하지 않는다.
 
 ## 4. 채팅 앱 만들기
+
 ### 4-1. 기본틀 작성
+
 기본적인 서버-클라이언트 통신을 맛보았으니 본격적으로 간단한 그룹 채팅 앱을 만들어보자. 아래와 같이 `index.html` 파일을 수정하여 기본 틀을 만든다.
 
 ```html
@@ -242,7 +252,7 @@ wss.on("connection", (ws, request) => {
     <title>Websocket Chatting</title>
 
     <script>
-      const ws = new WebSocket("ws://localhost:8001");
+      const ws = new WebSocket("ws://localhost:8001")
 
       // 메세지 전송
       function sendMessage() {}
@@ -277,37 +287,37 @@ wss.on("connection", (ws, request) => {
 아래와 같이 `app.js` 파일도 처음과 같은 상태로 만들어 놓자.
 
 ```js
-const express = require("express");
-const { WebSocketServer } = require("ws");
-const app = express();
+const express = require("express")
+const { WebSocketServer } = require("ws")
+const app = express()
 
-app.use(express.static("public"));
+app.use(express.static("public"))
 
 app.listen(8000, () => {
-  console.log(`Example app listening on port 8000`);
-});
+  console.log(`Example app listening on port 8000`)
+})
 
-const wss = new WebSocketServer({ port: 8001 });
+const wss = new WebSocketServer({ port: 8001 })
 
-wss.on("connection", (ws, request) => {
-});
+wss.on("connection", (ws, request) => {})
 ```
 
 ### 4-2. 브로드캐스트
 
 일단 유저가 접속할 때 이를 모든 클라이언트에 알리고, 서버에도 로깅하자. 이때, 모든 클라이언트에 메세지를 보내는 것을 브로드캐스트 (Broadcast) 한다고 말한다.
+
 ```js
 // ...
 wss.on("connection", (ws, request) => {
-  wss.clients.forEach((client) => {
-    client.send(`새로운 유저가 접속했습니다. 현재 유저 ${wss.clients.size} 명`);
-  });
+  wss.clients.forEach(client => {
+    client.send(`새로운 유저가 접속했습니다. 현재 유저 ${wss.clients.size} 명`)
+  })
 
-  console.log(`새로운 유저 접속: ${request.socket.remoteAddress}`);
-});
+  console.log(`새로운 유저 접속: ${request.socket.remoteAddress}`)
+})
 ```
 
-> `wss.clients` 는 리스트가 아닌 Set 이므로 개수를 셀 때 `length` 대신 `size` 를 사용하여 받아온다. 
+> `wss.clients` 는 리스트가 아닌 Set 이므로 개수를 셀 때 `length` 대신 `size` 를 사용하여 받아온다.
 
 ### 4-3. 클라이언트에서 수신
 
@@ -315,15 +325,15 @@ wss.on("connection", (ws, request) => {
 
 ```js
 function receiveMessage(event) {
-  const chat = document.createElement("div");
-  const message = document.createTextNode(event.data);
-  chat.appendChild(message);
+  const chat = document.createElement("div")
+  const message = document.createTextNode(event.data)
+  chat.appendChild(message)
 
-  const chatLog = document.getElementById("chat-log");
-  chatLog.appendChild(chat);
+  const chatLog = document.getElementById("chat-log")
+  chatLog.appendChild(chat)
 }
 
-ws.onmessage = receiveMessage;
+ws.onmessage = receiveMessage
 ```
 
 이제 클라이언트는 서버측에서 보내는 메세지를 받고, 새로운 HTML element 를 생성해서 유저에게 보여줄 수 있다. 여러 탭을 열어 접속해보자. 아래와 같이 메세지를 제대로 수신하여 표시하면 성공이다.
@@ -356,11 +366,11 @@ wss.on("connection", (ws, request) => {
 ```js
 // 메세지 전송
 function sendMessage() {
-  const nickname = document.getElementById("nickname").value;
-  const message = document.getElementById("message").value;
-  const fullMessage = `${nickname}: ${message}`;
+  const nickname = document.getElementById("nickname").value
+  const message = document.getElementById("message").value
+  const fullMessage = `${nickname}: ${message}`
 
-  ws.send(fullMessage);
+  ws.send(fullMessage)
 }
 ```
 
@@ -375,16 +385,16 @@ function sendMessage() {
 ```js
 // ...
 
-ws.on("message", (data) => {
-  wss.clients.forEach((client) => {
-    client.send(data.toString());
-  });
-});
+ws.on("message", data => {
+  wss.clients.forEach(client => {
+    client.send(data.toString())
+  })
+})
 
 // ...
 ```
 
-> 현재 클라이언트에서 전송되는 데이터를 서버에서 Blob으로 수신하므로 `toString()` 메소드로 String 으로 만들 필요가 있다. 
+> 현재 클라이언트에서 전송되는 데이터를 서버에서 Blob으로 수신하므로 `toString()` 메소드로 String 으로 만들 필요가 있다.
 
 아래와 같이 모든 탭에서 실시간으로 채팅할 수 있다면 성공이다.
 
@@ -428,17 +438,17 @@ wss.on("connection", (ws, request) => {
 // ...
 
 function clearMessage() {
-  document.getElementById("message").value = "";
+  document.getElementById("message").value = ""
 }
 
 // 메세지 전송
 function sendMessage() {
-  const nickname = document.getElementById("nickname").value;
-  const message = document.getElementById("message").value;
-  const fullMessage = `${nickname}: ${message}`;
+  const nickname = document.getElementById("nickname").value
+  const message = document.getElementById("message").value
+  const fullMessage = `${nickname}: ${message}`
 
-  ws.send(fullMessage);
-  clearMessage();
+  ws.send(fullMessage)
+  clearMessage()
 }
 
 // ...
@@ -449,7 +459,9 @@ function sendMessage() {
 Websocket 을 직접 사용하는 방법도 좋지만, 사실 node.js 진영에서는 [**socket.io**](https://socket.io) 라는 Websocket 을 Wrapping 하여 더 실시간 통신을 사용할 수 있는 라이브러리가 존재한다.
 
 socket.io 는 Websocket 뿐 아니라 Websocket 을 사용할 수 없는 환경에서는 HTTP long-polling 기법으로 자동으로 대체하여 통신한다. 이후 포스팅에서는 socket.io 을 다뤄보도록 할 예정이다.
+
 ## 6. 참고 자료
+
 실제 채팅 서비스는 훨씬 복잡한 구조를 갖겠지만, 우리가 만들어본 그룹 채팅 앱은 Websocket 의 원리를 간단하게 알아보기 위해 많은 점이 생략되었다. 더 자세하게 웹소켓에 대해 공부해보고 싶다면, 아래 참고자료 링크를 읽어보며 공부해보자.
 
 - https://expressjs.com/ko/starter/hello-world.html
