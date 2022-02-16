@@ -1,6 +1,6 @@
 module.exports = {
   title: "hudi.blog",
-  description: "배움을 글로 정제해 공유하는 것을 좋아하는 개발자입니다.",
+  description: "꾸준히, 의미있는 학습을 기록하기 위한 공간입니다.",
   author: "Hudi",
   siteUrl: "https://hudi.blog",
   links: {
