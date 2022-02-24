@@ -2,6 +2,7 @@
 title: "동일성(Identity)과 동등성(Equality)"
 date: 2022-02-25 00:00:00
 tags:
+  - 학습기록
   - java
 ---
 
