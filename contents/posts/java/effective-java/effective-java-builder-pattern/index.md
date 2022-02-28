@@ -203,6 +203,16 @@ class Hamburger {
 
 마지막으로 `build` 메소드는 `Hamburger` 객체를 생성하여 반환하는데, `Hamburger` 의 매개변수에는 빌더 하나만 전달한다. `Hamburger` 클래스의 생성자는 `Builder` 를 전달받아 매개변수를 설정할 수 있다.
 
+위 클래스는 아래와 같이 사용할 수 있을 것 이다.
+
+```java
+Hamburger hamburger = new Hamburger.Builder(10)
+    .bun(2)
+    .lettuce(3)
+    .patty(3)
+    .build();
+```
+
 빌더패턴은 점층적 생성자 패턴과 자바빈즈 패턴 두 가지의 장점만을 취한 형태이다.
 
 > 책 19p ~ 21p 의 내용은 아직 제네릭에 대한 이해가 부족하므로 생략한다. 추후 제네릭을 제대로 이해하게 되면, 추가 포스팅을 올리거나 내용을 수정하여 추가하도록 할 예정이다.
