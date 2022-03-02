@@ -35,7 +35,7 @@ Number number2 = number1;
 System.out.println(number1 == number2); // true
 ```
 
-`number2` 는 `Number` 의 인스턴스를 새로 생성하지 않고, `number1` 을 대입받는다. 즉 `number1` 와 `number2` 는 같은 메모리 주소에 위치한 같은 객체를 바라보고 있다.
+`number2` 는 `Number` 의 인스턴스를 새로 생성하지 않고, `number1` 을 대입받는다. 즉 `number1` 와 `number2` 는 같은 메모리 주소에 위치한 같은 객체를 바라보고 있다. 객체는 각자의 고유한 식별자를 가지고 있는데, 이 식별자가 같다면 동일하다고 판단한다.
 
 ## 동등성 (Equality)
 
