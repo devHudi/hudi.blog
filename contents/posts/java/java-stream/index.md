@@ -61,6 +61,16 @@ stream.forEach(number -> System.out.println(number));
 
 스트림은 생성되고, 중간처리를 거쳐 최종처리까지 완료되면 닫히게된다. 이미 닫힌 스트림은 재사용할 수 없으며, 재사용을 시도할 경우 예외가 발생한다. **즉 스트림은 일회용이다.**
 
+```java
+List<Integer> numbers = List.of(10, 20, 25, 15, 30, 35);
+Stream<Integer> integerStream = numbers.stream()
+        .filter(number -> number > 20);
+
+integerStream.count();
+integerStream.count();
+// java.lang.IllegalStateException: stream has already been operated upon or closed
+```
+
 #### 원본 데이터를 변경하지 않는다
 
 스트림은 원본 객체의 값을 사용하기만 할 뿐 변경하지 않는다. 스트림은 최종 처리를 통해 원본과 무관한 새로운 객체를 생성한다.
