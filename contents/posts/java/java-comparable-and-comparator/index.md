@@ -30,7 +30,7 @@ class Number {
 }
 ```
 
-위 `Number` 사용자 정의 클래스를 정렬 가능하도록 만들기 위해서는 아래와 같이 코드를 작성하면 된다. implements 를 해줄 때 `Comparable` 의 제네릭으로 해당 객체의 타입을 넣어준다. 아래의 경우 `Comaprable<Number>` 로 작성된 것을 확인할 수 있다.
+위 `Number` 사용자 정의 클래스를 정렬 가능하도록 만들기 위해서는 아래와 같이 코드를 작성하면 된다. implements 를 해줄 때 `Comparable` 의 제네릭으로 해당 객체의 타입을 넣어준다. 아래의 경우 `Comparable<Number>` 로 작성된 것을 확인할 수 있다.
 
 ```java
 class Number implements Comparable<Number> {
