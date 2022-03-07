@@ -4,6 +4,7 @@ date: 2022-02-25 10:00:00
 tags:
   - 학습기록
   - java
+  - 디자인패턴
 series: Effective Java 3/E 학습 기록
 ---
 
