@@ -157,8 +157,6 @@ System.out.println(number1.divide(number2, RoundingMode.CEILING));
 
 ## 원시타입과 연산속도 비교
 
-### BigInteger vs int
-
 ```java
 @Test
 void bigInteger() {
@@ -196,37 +194,7 @@ BigInteger 소요시간: 17.195568083
 원시타입 int 소요시간: 0.845061292
 ```
 
-### BigDecimal vs double
-
-```java
-@Test
-void bigDecimal() {
-    long startTime = System.nanoTime();
-
-    BigDecimal bigDecimal = new BigDecimal("0");
-    for (double i = 0; i < Double.MAX_VALUE; i++) {
-        bigDecimal = bigDecimal.add(BigDecimal.valueOf(i));
-    }
-
-    long endTime = System.nanoTime();
-
-    System.out.println("BigDecimal 소요시간: " + (double) (endTime - startTime) / 1_000_000_000);
-}
-
-@Test
-void primitiveDouble() {
-    long startTime = System.nanoTime();
-
-    double number = 0;
-    for (double i = 0; i < Double.MAX_VALUE; i++) {
-        number = number + i;
-    }
-
-    long endTime = System.nanoTime();
-
-    System.out.println("원시타입 double 소요시간: " + (double) (endTime - startTime) / 1_000_000_000);
-}
-```
+BigInteger가 원시타입 대비 훨씬 실행속도가 느린 것을 알 수 있다.
 
 ## 결론
 
