@@ -12,7 +12,7 @@ tags:
 
 ![](./dto.png)
 
-DTO란 **Data Transfer Object**의 약자로, **계층 간 데이터 전송을 위해 도메인 모델 대신 사용되는 객체**이다. 이때, 계층이란 Persentation(View, Controller), Business(Service), Persistence(DAO, Repository) 등을 의미한다.
+DTO란 **Data Transfer Object**의 약자로, **계층 간 데이터 전송을 위해 도메인 모델 대신 사용되는 객체**이다. 이때, 계층이란 Presentation(View, Controller), Business(Service), Persistence(DAO, Repository) 등을 의미한다.
 
 > The difference between data transfer objects and business objects or data access objects is that a DTO does not have any behavior except for storage, retrieval, serialization and deserialization of its own data (mutators, accessors, parsers and serializers). In other words, DTOs are simple objects that should not contain any business logic but may contain serialization and deserialization mechanisms for transferring data over the wire.
 >
