@@ -2,6 +2,7 @@
 title: "계층화 아키텍처 (Layered Architecture)"
 date: 2022-04-30 12:30:00
 tags:
+  - 학습기록
   - 아키텍처
   - 디자인패턴
 ---
