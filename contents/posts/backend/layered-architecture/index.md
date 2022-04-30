@@ -6,6 +6,8 @@ tags:
   - 디자인패턴
 ---
 
+![](./layer-cake.jpeg)
+
 ## Layered Architecture
 
 Layered Architecture는 소프트웨어 개발에서 소프트웨어 개발에서 가장 일반적으로 널리 사용되는 아키텍처이다. 구성되는 계층의 숫자에 따라 N 계층 아키텍처 (N-tier Architecture) 라고도 한다.
