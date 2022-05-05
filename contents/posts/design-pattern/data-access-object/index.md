@@ -1,12 +1,12 @@
 ---
-title: "DAO(Data Access Object)"
+title: "DAO (Data Access Object)"
 date: 2022-05-05 13:20:00
 tags:
   - 학습기록
   - 객체지향
 ---
 
-## DAO(Data Access Object)
+## DAO (Data Access Object)
 
 ![](./dao.png)
 
