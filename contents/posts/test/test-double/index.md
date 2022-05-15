@@ -160,3 +160,12 @@ void createLine() {
 ## 상태검증? 행위검증?
 
 흔히 Stub은 상태검증을, Mock은 행위검증을 위해 사용한다고 한다. 하지만 아직 테스팅 경험도 적고, 이론적인 개념이 와닿지 않아서 이와 관련해서는 추후 공부해본 다음 따로 글을 작성해보려한다.
+
+## 참고
+
+- https://martinfowler.com/bliki/TestDouble.html
+- https://codinghack.tistory.com/92
+- https://martinfowler.com/articles/mocksArentStubs.html
+- https://johngrib.github.io/wiki/test-terms/
+- https://martinfowler.com/bliki/UnitTest.html
+- https://docs.microsoft.com/en-us/archive/msdn-magazine/2007/september/unit-testing-exploring-the-continuum-of-test-doubles
