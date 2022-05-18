@@ -21,9 +21,9 @@ tags:
 
 앞서 격리된 테스트가 무엇인지, 테스트를 격리하는 것이 왜 중요한 것인지 알아보았다. 다음으로는 Spring Framework 에서 테스트를 격리하는 여러 방법에 대해 알아보자.
 
-### 테스트 더블을 사용한 테스트 격리
+### 테스트 더블 (Test Double)
 
-이전 테스트 더블 포스팅에서 테스트 더블은 테스트 대상(SUT: System Under Test)을 테스트 대상이 의존하고 있는 구성요소(DOC: Depened-on Component) 로부터 분리하여 테스트하기 위해 사용한다고 이야기했다.
+이전 **[테스트 더블 (Test Double)](https://hudi.blog/test-double/)** 포스팅에서 테스트 더블은 테스트 대상(SUT: System Under Test)을 테스트 대상이 의존하고 있는 구성요소(DOC: Depened-on Component) 로부터 분리하여 테스트하기 위해 사용한다고 이야기했다.
 
 테스트 더블은 또한 테스트 격리를 위해서도 사용된다. 예를 들어 Service 테스트에서 Dao 를 Mocking 하지 않고 실제 객체를 그대로 사용한다고 가정하자. Service Layer 의 각 테스트는 실제 데이터베이스를 변화시킬 것 이고, 이 테스트는 비결정적 테스트가 될 것이다.
 
@@ -31,7 +31,7 @@ tags:
 
 따라서 Dummy, Fake, Stub, Spy, Mock 등의 테스트 더블을 사용하여 테스트들을 격리할 수 있을 것 이다. 보통은 Mockito 라는 Mocking Framework 가 사용될 것이다.
 
-### @Transactional 을 사용한 테스트 격리
+### @Transactional
 
 Spring은 트랜잭션 관리를 위한 `@Transactional` 이라는 어노테이션을 제공한다. 프로덕션 코드에서 사용하는 방식과 다르게 테스트 코드에서 `@Transactional` 어노테이션을 사용하면 테스트 메서드가 종료될 때 자동으로 해당 트랜잭션이 롤백되어 테스트 코드가 변경한 데이터베이스를 테스트 이전 상태로 되돌려준다.
 
