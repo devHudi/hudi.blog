@@ -4,7 +4,8 @@ date: 2022-05-19 12:50:00
 tags:
   - 학습기록
   - 테스트
-  - Spring
+  - spring
+  - java
 ---
 
 ## 격리된 테스트 (Isolated Test)
