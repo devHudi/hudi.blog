@@ -21,9 +21,11 @@ AWS는 글로벌 클라우드 서비스이다. 따라서 AWS에서 제공되는 
 
 ![https://www.rackspace.com/blog/aws-101-regions-availability-zones](./availability-zone.png)
 
-AWS의 리전에는 최소 2개 이상의 데이터 센터 (Internet Data Center)가 위치해있다. 이 데이터 센터를 AWS에서는 **가용 영역 (Availability Zone)** 이라고 한다. 각각의 가용 영역은 같은 리전임에도 불구하고 서로 지리적으로 멀리 떨어져있다. 천재지변, 테러 등의 불가항력으로부터 대비하기 위함이다. 한국에는 총 4개의 가용영역이 존재한다.
+AWS의 리전은 **가용 영역 (Availability Zone)** 이라는 더 작은 단위로 격리된다. AWS 리전은 최소 2개 이상의 가용 영역으로 구성되며, 각 가용 영역은 최소 1개 이상의 데이터 센터 (Internet Data Center) 로 구성된다. 개별 데이터 센터에는 일반적으로 50,000 ~ 80,000 대의 물리적 서버가 있다고 한다. 현재 한국에는 총 4개의 가용영역이 존재한다.
 
-[AWS 글로벌 인프라 맵](https://aws.amazon.com/ko/about-aws/global-infrastructure/)에서 현재 존재하는 리전과 각 리전별 가용영역을 확인해볼 수 있다.
+각각의 가용 영역은 같은 리전임에도 불구하고 서로 지리적으로 멀리 떨어져있다. 천재지변, 테러 등의 불가항력으로부터 대비하기 위함이다.
+
+[**AWS 글로벌 인프라 맵**](https://aws.amazon.com/ko/about-aws/global-infrastructure/)에서 현재 존재하는 리전과 각 리전별 가용영역을 확인해볼 수 있다.
 
 ## 참고
 
