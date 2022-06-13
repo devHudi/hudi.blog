@@ -23,7 +23,7 @@ CORS와 SOP는 모두 출처(Origin)와 관련된 개념이다. 따라서 이 �
 
 - `http://example.com/hello` 와 `http://example.com/bye` 는 다른 URL이지만, 프로토콜, 도메인, 포트가 모두 같으므로 동일 출처이다.
 - `http://example.com` 와 `https://example.com` 은 같은 리소스를 가리키고 있지만, 프로토콜이 다르므로 동일 출처가 아니다.
-- `http://example.com` 와 `http://example.com:80` 은 얼핏보면 다른 출처같지만, 전자의 경우 http 의 기본 포트인 80이 생략된 형태이므로 이는 같은 포트라고 할 수 있다.
+- `http://example.com` 와 `http://example.com:80` 은 얼핏보면 다른 출처같지만, 전자의 경우 http 의 기본 포트인 80이 생략된 형태이므로 이는 같은 출처라고 할 수 있다.
 
 ## 동일 출처 정책 (Same-Origin Policy, SOP)
 
