@@ -3,6 +3,7 @@ title: "[AWS] VPC (Virtual Private Cloud) (ft. CIDR, 서브넷, 라우팅 테이
 date: 2022-06-06 12:00:00
 tags:
   - 학습기록
+  - 데브옵스
   - 클라우드
   - aws
   - 네트워크
