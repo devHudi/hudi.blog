@@ -55,11 +55,11 @@ NAT 게이트웨이를 생성할 때 주의해야할 점은 NAT 게이트웨이�
 ## 배포 스크립트 작성 및 스프링 부트 설정
 
 ```bash
-sudo kill `ps -ef | grep guestbook | cut -d " " -f6 | head -1`;
-git pull https://github.com/Likelion-Inha-10/fe-guest-book-api.git &&
+sudo kill `ps -ef | grep project-name | cut -d " " -f6 | head -1`;
+git pull https://github.com/username/repository-name &&
 ./gradlew bootJar &&
 cd ./build/libs &&
-sudo nohup java -jar -Dspring.profiles.active=prod guestbook-0.0.1-SNAPSHOT.jar &
+sudo nohup java -jar -Dspring.profiles.active=prod project-name-0.0.1-SNAPSHOT.jar &
 ```
 
 아직 젠킨스와 같은 CI/CD 도구를 배우지 않았으니 배포 스크립트는 위와 같이 쉘 스크립트로 간단히 작성하였다. 사실 리눅스 커맨드나 쉘 스크립트도 잘 사용하지 못했었는데, 토미의 리눅스 커맨드 강의를 듣고, 많은 것을 배웠다. 위 커맨드는 단순히 이미 떠있는 스프링 프로세스를 죽이고, git pull 로 최신 코드를 가져와 빌드 후 nohup 으로 스프링 프로세스를 백그라운드로 띄우는 커맨드이다.
