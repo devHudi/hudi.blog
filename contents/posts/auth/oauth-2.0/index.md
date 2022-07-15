@@ -40,24 +40,31 @@ tags:
 
 위에서 언급한 '사용자', '우리의 서비스', '타사 플랫폼(구글, 페이스북, 트위터)' 등을 부르는 용어가 존재한다. 이를 먼저 정리하고 넘어간다.
 
-- Resource Owner : 리소스 소유자. 우리의 서비스를 이용하면서, 구글, 페이스북 등의 플랫폼에서 리소스를 소유하고 있는 사용자이다.
-- Client : Resource Server의 자원을 이용하고자 하는 서비스
-- Authorization Server : Resource Owner를 인증하고, Client에게 액세스 토큰을 발급해주는 서버
-- Resource Server : 구글, 페이스북, 트위터와 같이 리소스를 가지고 있는 서버
+### Resource Owner
+
+리소스 소유자. 우리의 서비스를 이용하면서, 구글, 페이스북 등의 플랫폼에서 리소스를 소유하고 있는 사용자이다. 리소스라 하면 '구글 캘린더 정보', '페이스북 친구 목록', '네이버 블로그 포스트 작성' 등이 해당될 것이다.
+
+### Authorization & Resource Server
+
+**Authorization Server**는 Resource Owner를 인증하고, Client에게 액세스 토큰을 발급해주는 서버이다. **Resource Server**는 구글, 페이스북, 트위터와 같이 리소스를 가지고 있는 서버를 말한다.
 
 > Authorization Server와 Resource Server는 [공식문서](https://datatracker.ietf.org/doc/html/rfc6749#section-1.2)상 별개로 구분되어 있지만, 별개의 서버로 구성할지, 하나의 서버로 구성할지는 개발자가 선택하기 나름이라고 한다.
+
+### Client
+
+Resource Server의 자원을 이용하고자 하는 서비스. 보통 우리가 개발하려는 서비스가 될 것이다.
 
 > Client는 우리가 구현하는 서비스이므로 Resource Owner와 헷갈리지 말자. Resource Server와 Authorization Server의 입장에서는 우리 서비스가 클라이언트이기 때문에 이런 이름을 갖게 된 것 이다.
 
 ## 어플리케이션 등록
 
-선행되어야 하는 작업이 있다. Client를 Resource Server 에 등록해야하는 작업이다. 이때, Redirect URI를 등록해야한다. Redirect URI는 사용자가 OAuth 2.0 서비스에서 인증을 마치고 (예를 들어 구글 로그인 페이지에서 로그인을 마쳤을 때) 사용자를 리디렉션시킬 위치이다.
+OAuth 2.0 서비스를 이용하기전에 선행되어야 하는 작업이 있다. Client를 Resource Server 에 등록해야하는 작업이다. 이때, Redirect URI를 등록해야한다. Redirect URI는 사용자가 OAuth 2.0 서비스에서 인증을 마치고 (예를 들어 구글 로그인 페이지에서 로그인을 마쳤을 때) 사용자를 리디렉션시킬 위치이다.
 
 ### Redirect URI
 
 OAuth 2.0 서비스는 인증이 성공한 사용자를 사전에 등록된 Redirect URI로만 리디렉션 시킨다. 승인되지 않은 URI로 리디렉션 될 경우, 추후 설명할 Authorization Code를 중간에 탈취당할 위험성이 있기 때문이다. 일부 OAuth 2.0 서비스는 여러 Redirect URI를 등록할 수 있다.
 
-Redirect URI는 기본적으로 보안을 위해 https만 허용된다. 단, 루프백(localhost)는 예외적으로 http가 허용된다.
+Redirect URI는 기본적으로 보안을 위해 https만 허용된다. 단, 루프백(localhost)은 예외적으로 http가 허용된다.
 
 ### Client ID, Client Secret
 
