@@ -49,7 +49,7 @@ IdP는 구글, 카카오와 같이 OpenID 서비스를 제공하는 당사자이
 
 OAuth 2.0 프레임워크는 어플리케이션을 승인한 사용자에 대한 정보를 명시적으로 제공하지 않고, **액세스 토큰(Access Token)이라는 형태로 권한**을 제공한다. 액세스 토큰은 마치 **호텔 키 카드**와 같다. 호텔 카드키만으로는 키 카드 소유자가 어떤 객실에 출입할 권한이 있는지 알 수 있지만, 카드키 소유자에 대한 신원 정보는 전혀 알 수 없다.
 
-하지만, **OpenID의 주요 목적은 인증(Authentication)**이다. 사용자의 신원을 확인하는데에 그 목적이 존재한다. 액세스 토큰이 호텔 키 카드라면, ID 토큰은 주민등록증과 같다. 주민등록증으로 신원 확인(이름, 사진, 거주지 주소 등)을 확인할 수 있겠지만, 호텔 객실에는 출입할 수 없을 것이다.
+하지만, OpenID의 주요 목적은 **인증(Authentication)**이다. OpenID를 사용하면 클라이언트는 ID 토큰을 획득할 수 있다. 이 ID 토큰에는 사용자에 대한 신원 정보가 담겨있다. 액세스 토큰이 호텔 키 카드라면, ID 토큰은 주민등록증이라고 할 수 있다. 주민등록증으로 신원 확인(이름, 사진, 거주지 주소 등)을 확인할 수 있겠지만, 호텔 객실에는 출입할 수 없을 것이다.
 
 정리하자면, OAuth 2.0은 리소스 서버로부터 리소스를 가져오기 위한 **액세스 토큰 확보에 목적**이 있다면, OpenID Connect는 사용자의 **신원 정보가 담긴 ID 토큰 확보**에 그 목적이 있다.
 
@@ -87,3 +87,12 @@ eyJhbGciOiJSUzI1NiIsImtpZCI6IjFlOWdkazcifQ.ewogImlzcyI6ICJodHRwOi8vc2VydmVyLmV4Y
 ```
 
 위와 같이 `iss` `exp` 같은 기본적인 클레임과 함께 `sub` 라는 유저 식별 정보(ID)를 보내준다. 위 예시에서는 유저 식별 정보만 ID 토큰에 포함되도록 반환받았다. 그런데, OAuth 2.0의 스코프를 `openid` 뿐 아니라 IdP에서 제공하는 추가적인 스코프(예를 들어 `email` 등)를 추가로 포함하여 요청하면 ID 토큰에 유저에 대한 추가적인 정보를 얻어올 수 있을 것 이다.
+
+## 참고
+
+- https://openid.net/specs/openid-connect-core-1_0.html
+- https://www.oauth.com/oauth2-servers/openid-connect/
+- https://en.wikipedia.org/wiki/OpenID
+- https://developer.okta.com/blog/2019/10/21/illustrated-guide-to-oauth-and-oidc
+- https://www.pingidentity.com/en/resources/content-library/articles/openid-connect.html
+- https://www.samsungsds.com/kr/insights/oidc.html
