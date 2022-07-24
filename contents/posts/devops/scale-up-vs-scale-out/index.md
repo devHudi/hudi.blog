@@ -1,5 +1,5 @@
 ---
-title: "수직 확장(Scale up) vs 수평 확장 (Scale out)"
+title: "수직 확장(Scale up) vs 수평 확장(Scale out)"
 date: 2022-06-20 16:30:00
 tags:
   - 학습기록
