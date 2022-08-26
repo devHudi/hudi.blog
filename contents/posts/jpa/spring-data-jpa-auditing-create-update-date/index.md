@@ -26,7 +26,7 @@ public class SampleApplication {
 }
 ```
 
-우선 `@EnableJpaAuditing` 어노테이션을 사용하여, Auditing을 활성화 해야한다.
+우선 `@EnableJpaAuditing` 어노테이션을 사용하여, Auditing을 활성화 해야한다. Application 클래스에 붙이거나, `@Configuration` 어노테이션이 사용된 클래스에 붙이면 된다.
 
 ## 엔티티 코드 작성
 
