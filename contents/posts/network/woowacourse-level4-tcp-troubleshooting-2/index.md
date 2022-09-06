@@ -12,7 +12,7 @@ tags:
 
 ## 배경
 
-직전 포스팅인 **[HTTP 서버 구현 미션 트러블 슈팅 (1) - BufferedReader의 무한 대기 이슈](https:///woowacourse-level4-tcp-troubleshooting/)** 포스팅에서 BufferedReader의 `readLine()` 메소드를 사용할 때 Body 데이터를 읽어오지 않는 이슈와 원인에 대해 다루어보았다.
+직전 포스팅인 **[HTTP 서버 구현 미션 트러블 슈팅 (1) - BufferedReader의 무한 대기 이슈](https://hudi.blog/woowacourse-level4-tcp-troubleshooting/)** 포스팅에서 BufferedReader의 `readLine()` 메소드를 사용할 때 Body 데이터를 읽어오지 않는 이슈와 원인에 대해 다루어보았다.
 
 저번 글에서는 BufferedReader의 `readLine()` 메소드가 끝까지 데이터를 반환하지 않았던 이슈를 다뤘다면, 이번 포스팅에서는 **데이터를 끝까지 받았음에도 불구하고 루프를 탈출하지 못해 서버가 응답하지 못했던 이슈**와 해결 방법을 정리해보려고 한다.
 
