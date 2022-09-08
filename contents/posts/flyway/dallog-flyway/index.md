@@ -256,9 +256,9 @@ Flyway의 핵심 기능입니다. 마이그레이션 스크립트의 최신 버�
 
 모든 마이그레이션 스크립트가 실행된 이후 실행되는 스크립트 입니다. Repeatable Migrations 끼리는 description 순서대로 실행됩니다. **한번 실행되며, 파일이 변경되어 체크섬이 변경되면 또 실행**됩니다.
 
-## flyway_schema_history
+## flyway\_schema\_history
 
-![스크린샷 2022-09-06 오후 9.56.45.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/1698e605-8f37-4028-b0cd-e3133fa3c2b1/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2022-09-06_%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE_9.56.45.png)
+![](./flyway_schema_history.png)
 
 데이터베이스를 확인해보면, 우리가 생성하지 않은 테이블이 하나 생성된 것을 확인할 수 있습니다. `flyway_schema_history` 라는 이름의 테이블인데요, Flyway는 이 테이블을 사용하여, 마이그레이션에 대한 버전 관리를 합니다. 한번 `V2__add_contact.sql` 을 제거하고, `V1__init.sql` 에 `contact` 컬럼을 추가해볼까요? `V1__init.sql` 을 아래와 같이 변경하고, 애플리케이션을 실행해봅시다.
 
