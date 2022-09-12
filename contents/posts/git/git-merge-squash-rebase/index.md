@@ -25,7 +25,7 @@ $ git merge my-branch
 
 ![Fast-Forward Merge](./fast-forward-merge.png)
 
-새로운 브랜치 `my-branch` 가 `main` 브랜치로부터 분기된 이후 `main` 브랜치에 새로운 커밋이 올라오지 않았다면, `my-branch` 가 `main` 와 비교하여 최신의 브랜치라고 할 수 있다. 이런 경우 `my-branch` 의 변경 이력을 그대로 `main` 으로 가져올 수 있는데, 이를 Fase-Forward Merge 라고 한다.
+새로운 브랜치 `my-branch` 가 `main` 브랜치로부터 분기된 이후 `main` 브랜치에 새로운 커밋이 올라오지 않았다면, `my-branch` 가 `main` 와 비교하여 최신의 브랜치라고 할 수 있다. 이런 경우 `my-branch` 의 변경 이력을 그대로 `main` 으로 가져올 수 있는데, 이를 Fast-Forward Merge 라고 한다.
 
 ### Merge (Recursive)
 
