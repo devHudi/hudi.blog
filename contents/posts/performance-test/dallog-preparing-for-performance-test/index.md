@@ -57,7 +57,7 @@ nGrinder는 Controller, Agent, Target으로 구성됩니다. Controller는 WAS �
 
 WAS 기반으로 동작하기 때문에 젠킨스나 소나큐브 대시보드와 같이 개발자 각각의 계정을 가질 수 있고, 계정 별 부하 테스트 히스토리를 관리할수도 있는 점이 장점입니다.
 
-### 🦗 Locust (19.8k)
+### 🦗 Locust (Star 19.8k)
 
 Locust는 파이썬으로 개발된 성능 테스트 도구입니다. JMeter나 nGrinder와는 다르게 기본으로 파이썬 코드를 작성하여 성능 테스트를 수행하도록 만들어져있습니다.
 
