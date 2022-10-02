@@ -15,7 +15,7 @@ tags:
 
 아직 블로그에 작성하지 않았지만, 직전 미션인 톰캣 구현하기 미션에서는 톰캣을 모방한 아주 간단한 HTTP 서버를 구현하였다. TCP 소켓을 사용하여 HTTP 프로토콜을 직접 구현해보는 경험을 하였다.
 
-이 미션에서는 서버가 처리해야할 URL이 생길때마다 컨트롤러 클래스를 추가로 구현해야한다. 그리고, 이렇게 만들어진 컨트롤러 클래스를 `RequestMapping` 이라는 클래스에 수동으로 등록해줘야했다. `RequestMapping` 클래스가 수정되면, 프레임워크 영역까지 영향을 줄 수 있으므로, 개발자는 온전히 비즈니스 로직에 집중할 수 없다. 이런 불편한 구조를 애노테이션을 사용한 MVC 구조로 **점진적으로 리팩토링** 한다.
+이 미션에서는 서버가 처리해야할 URL이 생길때마다 컨트롤러 클래스를 추가로 구현해야한다. 그리고, 이렇게 만들어진 컨트롤러 클래스를 `RequestMapping` 이라는 클래스에 수동으로 등록해줘야했다. `RequestMapping` 클래스가 수정되면, 프레임워크 영역까지 영향을 줄 수 있으므로, 개발자는 온전히 비즈니스 로직에 집중할 수 없다. 이런 불편한 구조를 어노테이션을 사용한 MVC 구조로 **점진적으로 리팩토링** 한다.
 
 ![Spring MVC 구조](./spring-mvc.png)
 
@@ -324,7 +324,7 @@ public class AnnotationHandlerMapping implements HandlerMapping {
 }
 ```
 
-`initialize()` 메소드에서 `Map<HandlerKey, HandlerExecution> handlerExecutions` 필드를 초기화하는 작업을 수행한다. `extractClasses()` 에서는 `Reflections` 라이브러리를 사용하여, `basePackage` 에 존재하는 `@Controller` 애노테이션이 붙은 모든 클래스를 가져온다. 가져온 클래스들의 `@RequestMapping` 어노테이션이 붙은 모든 메소드를 `extractMethods()` 메소드가 추출한다.
+`initialize()` 메소드에서 `Map<HandlerKey, HandlerExecution> handlerExecutions` 필드를 초기화하는 작업을 수행한다. `extractClasses()` 에서는 `Reflections` 라이브러리를 사용하여, `basePackage` 에 존재하는 `@Controller` 어노테이션이 붙은 모든 클래스를 가져온다. 가져온 클래스들의 `@RequestMapping` 어노테이션이 붙은 모든 메소드를 `extractMethods()` 메소드가 추출한다.
 
 `addHandlerExecutions()` 메소드에서는 가져온 `@RequestMapping` 의 모든 메소드에 대해 `HandlerKey` 와 `HandlerExecution` 을 생성해 `handlerExecutions` 필드에 추가한다.
 
@@ -477,7 +477,7 @@ public class AppWebApplicationInitializer implements WebApplicationInitializer {
 
 ## 2단계 - **점진적인 리팩터링**
 
-`Controller` 인터페이스 기반의 구조에서 애노테이션 기반의 구조로 점진적으로 리팩토링 해본다. 지금은 미션이지만, 실무에서는 모든 코드를 한번에 새로운 구조로 리팩토링하는 것은 굉장히 어렵다. 프로덕션은 훨씬 복잡하고, 영향 범위가 크기 때문이다. 따라서 기존 코드를 유지하면서, 새로운 기능을 추가하는 방법을 사용한다. 이에 대한 내용은 교살자(strangler) 패턴에 대해 공부해보면 좋을 것 같다.
+`Controller` 인터페이스 기반의 구조에서 어노테이션 기반의 구조로 점진적으로 리팩토링 해본다. 지금은 미션이지만, 실무에서는 모든 코드를 한번에 새로운 구조로 리팩토링하는 것은 굉장히 어렵다. 프로덕션은 훨씬 복잡하고, 영향 범위가 크기 때문이다. 따라서 기존 코드를 유지하면서, 새로운 기능을 추가하는 방법을 사용한다. 이에 대한 내용은 교살자(strangler) 패턴에 대해 공부해보면 좋을 것 같다.
 
 ### HandlerAdapter
 
@@ -846,7 +846,7 @@ public class JsonView implements View {
 
 ## 레거시 코드 제거
 
-기존 `Controller` 인터페이스 기반으로 작성된 모든 구현체를 `@Controller` 애노테이션 기반으로 변경하고, `asis` 패키지의 모든 코드를 제거해보자. 이전과 동일하게 정상적으로 웹 애플리케이션이 동작하는 것을 확인할 수 있다.
+기존 `Controller` 인터페이스 기반으로 작성된 모든 구현체를 `@Controller` 어노테이션 기반으로 변경하고, `asis` 패키지의 모든 코드를 제거해보자. 이전과 동일하게 정상적으로 웹 애플리케이션이 동작하는 것을 확인할 수 있다.
 
 ## 마치며
 
