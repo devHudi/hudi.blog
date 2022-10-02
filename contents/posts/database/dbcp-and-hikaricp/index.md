@@ -1,5 +1,5 @@
 ---
-title: "데이터베이스 커넥션 풀 (Connection Pool)과 Hikari CP"
+title: "데이터베이스 커넥션 풀 (Connection Pool)과 HikariCP"
 date: 2022-10-02 02:30:00
 tags:
   - 학습기록
