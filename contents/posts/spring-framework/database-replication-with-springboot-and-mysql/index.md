@@ -78,9 +78,13 @@ CREATE TABLE user(
 이제 레플리케이션 전용 MySQL 계정을 생성하고, 레플리케이션 권한을 부여할 것이다. 이 계정은 레플리카 서버에서 소스 서버에 접근할 때 사용된다.
 
 ```sql
-CREATE USER 'replication'@'%' IDENTIFIED BY 'password';
+CREATE USER 'replication'@'%' IDENTIFIED WITH mysql_native_password BY 'password';
 GRANT REPLICATION SLAVE ON *.* TO 'replication'@'%';
 ```
+
+MySQL 5.8부터는 Password Auth방식이 `caching_sha2_password` 방식으로 변경되었다고 한다. 따라서 위와 같이 유저를 생성할 때 `IDENTIFIED WITH mysql_native_password BY` 로 생성해야한다. 그렇지 않으면 아래의 에러를 만날 수 있다.
+
+> error connecting to master 'replication_user@mysql-primary:3306' - retry-time: 60 retries: 1 message: Authentication plugin 'caching_sha2_password' reported error: Authentication requires secure connection.
 
 이제 `my.cnf` 파일을 수정하여, MySQL 설정을 변경해보자.
 
