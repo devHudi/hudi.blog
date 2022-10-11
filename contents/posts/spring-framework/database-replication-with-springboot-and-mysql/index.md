@@ -44,7 +44,7 @@ $ apt install mysql-server
 
 ```sql
 CREATE USER 'hudi'@'%' IDENTIFIED BY 'password';
-GRANT ALL PRIVILEGES ON *.* TO 'replication'@'%';
+GRANT ALL PRIVILEGES ON *.* TO 'hudi'@'%';
 FLUSH PRIVILEGES;
 ```
 
