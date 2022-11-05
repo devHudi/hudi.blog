@@ -10,7 +10,7 @@ tags:
   - 달록
 ---
 
-> 이 글은 우테코 달록팀 크루 [후디](https://github.com/devHudi)가 작성했습니다.
+> 이 글은 우아한테크코스 4기 [달록팀의 기술 블로그](https://dallog.github.io/troubleshooting-of-category-role-concurrency-issue/)에 게시된 글 입니다.
 
 오랜만의 포스팅 입니다. 이번 글에서는 달록에서 발생한 동시성 이슈를 JPA의 낙관적 락을 사용하여 해결한 경험에 대해 공유드리겠습니다.
 
