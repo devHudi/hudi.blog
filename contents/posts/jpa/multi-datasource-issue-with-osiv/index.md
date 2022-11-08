@@ -2,6 +2,7 @@
 title: "대체 왜 DataSource 라우팅이 안되는거야!? (feat. OSIV)"
 date: 2022-10-17 00:00:00
 tags:
+  - 학습기록
   - jpa
   - spring
   - 우아한테크코스
@@ -143,13 +144,11 @@ class MemberController {
 
 ```yaml
 spring:
-    jpa:
-        open-in-view: false
+  jpa:
+    open-in-view: false
 ```
 
 설정을 이렇게 변경하고, 다시 테스트해보면 이제 DataSource 라우팅이 정상적으로 동작합니다!
-
-
 
 ## 마치며
 
