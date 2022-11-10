@@ -1,0 +1,103 @@
+---
+title: "스프링 로컬 캐시를 사용한 외부 캘린더 API 호출 최적화"
+date: 2022-11-10 18:30:00
+tags:
+  - 학습기록
+  - 캐시
+  - 성능개선
+  - 우아한테크코스
+  - 달록
+---
+
+> 이 글은 우아한테크코스 4기 [달록팀의 기술 블로그](https://dallog.github.io/optimizing-external-calendar-api-calling-with-spring-local-cache)에 게시된 글 입니다.
+
+## 구글 캘린더 연동 기능의 성능 저하
+
+![](./1.png)
+
+저희 달록은 유저의 구글 캘린더를 가져와 달록의 일정과 함께 볼 수 있는 기능을 제공합니다. 그리고 유저가 일정을 요청하면, 달록 서버가 직접 구글 캘린더의 API를 호출하여 달록 일정과 구글 캘린더 일정을 함께 응답하는 구죠이죠.
+
+편리한 기능이지만, 말만 들어도 성능상의 이슈가 발생할 것 같습니다. 로컬에서 테스트한 결과 구글 캘린더에 한번 API 요청을 보내고, 응답을 받기까지 대략 **500ms 정도의 시간이 소요**됩니다. 그런데 달록에서는 하나가 아닌 **여러개의 구글 캘린더**를 연동할 수 있습니다. 3개의 구글 캘린더를 연동했다면, 일정을 불러오는데만 1500ms 이상이 걸리는 것이죠. **사용자 경험 측면에서 굉장히 좋지 않은 상황**입니다.
+
+이런 문제를 해결하기 위해 프론트엔드에서는 React Query를 사용하여 백엔드 서버의 응답을 캐싱해두고 있습니다. 어느정도의 성능 저하는 해소되었지만, 문제는 **재방문 시점**입니다. 새로고침을 하면 React Query의 캐시가 비워지고, 다시 백엔드 서버로 요청을 하게 됩니다. 그러면 백엔드 서버도 구글 캘린더 서버로 요청을 보내게 되겠죠. 프론트엔드에서의 캐싱은 완벽한 해결책은 아닙니다.
+
+그렇다면 서버에서 캐싱하는 것은 어떨까요? 구글 캘린더 API 요청에 대한 응답을 서버가 일정 시간 동안 보관하면서, 클라이언트에는 **캐싱된 구글 캘린더 데이터를 보내준다면 성능이 많이 개선**되겠죠? 이를 위해 달록은 **스프링 캐시 추상화**를 이용했습니다.
+
+## 스프링 캐시 추상화와 ConcurrentMapCache의 문제점
+
+스프링은 빈 메소드에 캐시 서비스를 적용할 수 있는 기능을 어노테이션과 AOP를 통해 제공합니다. AOP를 사용하기 때문에 내부 구현에 영향을 주지 않고, 특정 캐시 기술에 종속되지 않도록 구현할 수 있습니다.
+
+스프링에서 기본으로 사용되는 캐시는 `ConcurrentMapCache` 입니다. 자바의 `ConcurrentHashMap` 을 사용한 간단한 캐시 구현체이죠. 덕분에 별도의 설정 없이 간단히 세팅할 수 있습니다. 다만 캐시 용량 제한, 다양한 저장방식, 다중 서버 분산과 같은 고급 설정을 할 수 없습니다. 특히 캐시 데이터에 대해 TTL(time-to-live)를 설정할수도 없습니다. 캐시된 데이터의 만료 기한을 설정할 수 없고, 한번 캐시된 데이터를 지우려면 스케줄링을 돌려서 일괄 삭제해야합니다.
+
+모든 유저에게 동일하게 보이는 데이터에 대해서는 이렇게 일정 주기로 전체 캐시를 지우는 만료 정책을 설정해도 괜찮습니다. 그런데 저희가 캐시하려고 하는 데이터는 각 유저별 고유한 데이터입니다. 일정 주기로 일괄삭제할 수 없어요. 따라서 캐시가 개별적인 만료 기한을 가져야합니다.
+
+이런 기능을 하려면면 `EhCache` 나 `CaffeinCache` 같은 서드파티 로컬 캐시 구현체를 사용하거나 `Redis` 같은 캐시를 별도로 사용해야합니다. 그런데, 겨우 TTL 기능 하나 때문에 라이브러리를 사용하고 싶지는 않았습니다.
+
+## ExpiringConcurrentMapCache 구현
+
+이런 문제를 해결하기 위해 `ConcurrentMapCache` 를 상속받은 `ExpiringConcurrentMapCache` 라는 구현체를 직접 만들었습니다. `ExpiringConcurrentMapCache` 는 데이터가 캐시에 등록되면 캐시 키와 `LocalDateTime.now()` 쌍을 별도의 해시맵에 저장합니다. 그리고 해당 캐시 데이터가 조회될 때 마다 저장된 LocalDateTime과 현재 시각을 비교하여 만료 여부를 판단합니다. 코드를 한번 살펴볼까요?
+
+```java
+public class ExpiringConcurrentMapCache extends ConcurrentMapCache {
+
+    private final Map<Object, LocalDateTime> expires = new HashMap<>();
+    private final long expireAfter;
+
+    public ExpiringConcurrentMapCache(final String name, final long expireAfter) {
+        super(name);
+
+        this.expireAfter = expireAfter;
+    }
+
+    @Override
+    protected Object lookup(final Object key) {
+        LocalDateTime expiredDate = expires.get(key);
+        if (Objects.isNull(expiredDate) || LocalDateTime.now().isBefore(expiredDate)) {
+            return super.lookup(key);
+        }
+
+        expires.remove(key);
+        return null;
+    }
+
+    @Override
+    public void put(final Object key, final Object value) {
+        LocalDateTime expiredAt = LocalDateTime.now().plusSeconds(expireAfter);
+        expires.put(key, expiredAt);
+
+        super.put(key, value);
+    }
+}
+```
+
+사실 이야기에 비해 굉장히 간단합니다. 필드로 캐시 키와 만료 시점을 관리하는 `expires` 라는 `HashMap` 을 가지고 있습니다. 그리고 캐시 데이터의 만료 기한을 초 단위로 `expireAfter` 라는 변수로 관리합니다.
+
+`put()` 은 캐시에 데이터를 저장하는 시점에 `expires` 에 캐시 키와 만료 시점을 저장합니다. 만료 시점은 현재 시간 + `expireAfter` 입니다.
+
+`lookup()` 은 캐시 키로 캐시된 데이터를 조회할 때 사용합니다. 캐시 히트(cache hit)라면 캐시 데이터를, 캐시 미스(cache miss)라면 `null` 을 반환합니다. 이 메소드를 오버라이드하여 요청한 데이터가 만료되었다면 `null` 을 반환하고 해당 데이터의 캐시 키를 `expires` 에서 제거합니다.
+
+이렇게 간단히 만료되는 `ConcurrentMapCache` 를 사용할 수 있었습니다.
+
+## 성능 개선
+
+성능 개선 정도를 확인하기 위해 Jmeter를 사용하여 실제 API의 평균 응답 시간을 분석했습니다. 실제 구글 캘린더 API를 호출해야 의미가 있으므로 요청과 요청간 간격은 1초정도로 설정해서 서드 파티 쪽에 부하가 없게끔 설정했습니다. 1초 간격으로 100번의 요청을 보내 평균 응답 시간을 냈습니다.
+
+성능 테스트는 구글 캘린더 1개를 연동해 둔 상태로 진행했습니다.
+
+### 캐시 적용 전
+
+![](./2.png)
+
+캐시를 적용하지 않은 상태에서는 `734ms` 의 응답 시간을 보였습니다. 꽤나 느립니다. 구글 캘린더가 1개만 연동되어 있는 상황이므로 2개 연동하면 약 2배, 3개 연동하면 약 3배로 늘어날 것입니다. 사용자 경험이 굉장히 안좋을 겁니다.
+
+### 캐시 적용 후
+
+![](./3.png)
+
+최초에 캐시 미스가 발생해서 실제 API를 호출하는 요청에 대한 응답 시간은 제외하고, 캐시된 이후의 평균 응답시간만 측정했습니다. `156ms` 정도가 나오네요. 캘린더 1개 연동 기준 **약 4.7배 성능이 개선**되었습니다.
+
+## 마치며
+
+외부 API 요청에 대한 캐싱은 성능 개선 말고도 다른 이점이 존재합니다. 현재 상황은 아니지만, 만약에 외부 API 서비스가 호출 건당 요금을 지불해야하는 유료 서비스라면, 캐싱은 이때 발생하는 비용을 많이 절약할 수 있게 해줍니다.
+
+다만 지금의 캐싱 구조가 완벽한 구조는 아닙니다. 지금 달록의 서버는 스케일 아웃하지 않아 단일 서버입니다. 만약 서버를 다중화 하고, 그대로 로컬 캐시를 사용한다면 서버간 데이터의 불일치가 발생합니다. 따라서 만약 스케일 아웃해야하는 상황이 온다면 **Redis나 Memcached 같은 도구를 사용하여 별도의 캐시 서버를 성하여 다중 환경에 대응**해야할 것입니다.
