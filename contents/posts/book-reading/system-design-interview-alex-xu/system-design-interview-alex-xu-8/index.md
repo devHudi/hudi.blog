@@ -52,7 +52,7 @@ URL을 구성하는 문자를 알파벳 소문자, 알파벳 대문자, 숫자�
 
 ### 해시 후 충돌 해소
 
-`[https://en.wikipedia.org/wiki/Systems_design](https://en.wikipedia.org/wiki/Systems_design)` 을 유명한 해시 함수로 해싱해보자.
+`https://en.wikipedia.org/wiki/Systems_design` 을 유명한 해시 함수로 해싱해보자.
 
 - CRC32 : `5cb54054`
 - MD5 : `5a62509a84df9ee03fe1230b9df8b84e`
