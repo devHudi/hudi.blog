@@ -6,7 +6,7 @@ tags:
   - spring
 ---
 
-이전 포스팅인 ****[무중단 배포 중 구버전 프로세스를 그냥 종료해도 괜찮을까? (feat. Kill, Graceful Shutdown)](https://hudi.blog/how-to-gracefully-zero-downtime-deploy/)** 에서 스프링부트의 Graceful Shutdown에 대해서 간단히 다루어보았다. 이 내용을 조금 더 자세히 다루어보려고 한다.
+이전 포스팅인 **[무중단 배포 중 구버전 프로세스를 그냥 종료해도 괜찮을까? (feat. Kill, Graceful Shutdown)](https://hudi.blog/how-to-gracefully-zero-downtime-deploy/)** 에서 스프링부트의 Graceful Shutdown에 대해서 간단히 다루어보았다. 이 내용을 조금 더 자세히 다루어보려고 한다.
 
 ## Graceful Shutdown 이 없다면?
 
