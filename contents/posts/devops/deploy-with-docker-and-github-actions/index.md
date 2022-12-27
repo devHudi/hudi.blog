@@ -179,6 +179,7 @@ jobs:
           script: |
             docker stop $(docker ps -a -q) 
             docker rm $(docker ps -a -q) 
+            docker pull <docker_hub_username>/<image_name>
             docker run -d -p 8080:8080 --name <container_name> <docker_hub_username>/<image_name>
 ```
 
