@@ -53,7 +53,7 @@ management:
 
 ![노출된 /prometheus 엔드포인트](./actuator-prometheus-endpoint.png)
 
-설정을 저장하고 애플리케이션을 재시작하면, 위와 같이 `promethues` 라는 엔드포인트가 노출된 것을 확인할 수 있다. 한번 접속해보자.
+설정을 저장하고 애플리케이션을 재시작하면, 위와 같이 `prometheus` 라는 엔드포인트가 노출된 것을 확인할 수 있다. 한번 접속해보자.
 
 ![/prometheus 엔드포인트 응답](./prometheus-response.png)
 
