@@ -1,10 +1,10 @@
 ---
 title: "2021년 회고, Dunning-Kruger Effect"
 date: 2022-01-05
+series: "연도별 회고"
 tags:
   - 회고
   - 생각
-series: "연도별 회고"
 ---
 
 ![](./1.png)
