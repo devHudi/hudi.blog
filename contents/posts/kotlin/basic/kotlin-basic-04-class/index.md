@@ -24,7 +24,7 @@ class Member constructor(email: String, username: String) {
 
 ### 주 생성자
 
-클래스 이름 우측의 `**constructor` 키워드를 통해 클래스의 생성자를 정의**할 수 있다. 이를 **주 생성자(Primary Constructor)** 라고 한다. 주 생성자는 파라미터가 하나도 없는 경우를 제외하고는 **반드시 존재**해야한다. 파라미터가 하나도 없는 경우, 주 생성자 정의를 생략해도 되는데 그렇다면 기본적으로 No-Args Constructor가 생성된다.
+클래스 이름 우측의 **`constructor` 키워드를 통해 클래스의 생성자를 정의**할 수 있다. 이를 **주 생성자(Primary Constructor)** 라고 한다. 주 생성자는 파라미터가 하나도 없는 경우를 제외하고는 **반드시 존재**해야한다. 파라미터가 하나도 없는 경우, 주 생성자 정의를 생략해도 되는데 그렇다면 기본적으로 No-Args Constructor가 생성된다.
 
 주 생성자 정의 부분의 `constructor` 키워드는 생략이 가능하다.
 
