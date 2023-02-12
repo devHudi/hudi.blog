@@ -6,8 +6,8 @@ module.exports = {
   links: {
     github: "https://github.com/devHudi",
     facebook: "https://www.facebook.com/profile.php?id=100057724153835",
-    instagram: "https://www.instagram.com/dawn_fromeast/",
-    etc: "https://www.notion.so/Hudi-s-R-sum-0c1d1a1b35284d1eaf05c5bfac4a3cad",
+    linkedIn:
+      "https://www.linkedin.com/in/%EB%8F%99%ED%98%84-%EC%A1%B0-a88aa6254/",
   },
   utterances: {
     repo: "devHudi/hudi.blog",
