@@ -131,7 +131,7 @@ class UserClient {
 
 장애상황을 가정하기 위해 UserClient는 50% 확률로 HttpServerErrorException이 발생되어 실패한다.
 
-### 서비스
+### OrderService
 
 ```kotlin
 @Service
@@ -155,11 +155,11 @@ class OrderService(
 }
 ```
 
-핵심인 서비스 코드이다. 서킷 브레이커를 적용할 메소드 위에 `@CircuitBreaker` 어노테이션을 붙인다. `name` 파라미터는 서킷 브레이커 설정 시 넣어둔 이름과 동일하다.
+핵심인 서비스 코드이다. 서킷 브레이커를 적용할 메소드 위에 `@CircuitBreaker` 어노테이션을 붙인다. **name 파라미터는 서킷 브레이커 설정 시 넣어둔 이름과 동일**하다.
 
 `fallbackMethod` 파라미터는 서킷이 열렸을 때 fallback 을 하기 위해 실행할 메소드 이름을 입력한다. 단, 메소드 시그니처는 `@CircuitBreaker` 가 붙어있는 메소드와 **메소드 시그니쳐가 동일**해야하되, 추가로 Exception 파라미터를 받아야한다. 다만, 위와 같이 원본 메소드의 파라미터를 생략하고 Exception 만 받아도 괜찮은 듯 하다.
 
-직접 테스트해보면, `slidingWindowSize` 로 설정된 10개의 요청 중, `failureRateThreshold` 에 설정된 임계치 50%만큼 실패하게 되면 즉, 최근 10개의 요청 중 5개 이상의 요청이 실패하게 되면 서킷이 열려 fallback 메소드가 실행되게 된다.
+직접 테스트해보면, **slidingWindowSize**로 설정된 10개의 요청 중, **failureRateThreshold**에 설정된 임계치 50%만큼 실패하게 되면 즉, 최근 10개의 요청 중 5개 이상의 요청이 실패하게 되면 서킷이 열려 fallback 메소드가 실행되게 된다.
 
 ## 참고
 
