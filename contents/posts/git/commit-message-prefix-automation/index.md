@@ -126,6 +126,24 @@ echo "$PREFIX$DEFAULT_COMMIT_MSG" > $COMMIT_EDITMSG_FILE_PATH
 
 위의 개선 작업까지 거치면, 위와 같이 머지 커밋은 깔끔하게 원본 그대로 설정되는 것을 확인할 수 있을 것이다.
 
+### 이미 Prefix가 있는 경우 대응
+
+그런데 사용자가 커밋 메시지에 이미 Prefix를 포함했다면, Prefix를 삽입해서는 안될 것이다. 특히 amend 커밋의 경우 이미 커밋 메시지에 Prefix가 포함된 경우가 대부분일 텐데, 이를 적절히 처리하지 않는다면 중복으로 Prefix가 붙는 일이 발생할 것이다. 아래와 같이 해결해보자.
+
+```bash
+# ...
+if [ "$COMMIT_SOURCE" != "merge" ]; then
+  if [[ "$DEFAULT_COMMIT_MSG" != "[#$ISSUE_TICKET]"* ]]; then
+    PREFIX="[#$ISSUE_TICKET] "
+  fi
+fi
+# ...
+```
+
+Bash 에서는 문자열 앞 뒤에 와일드카드 `*` 를 사용하여 문자열 포함 여부를 검사할 수 있다 ([참고](https://stackoverflow.com/questions/19891491/linux-shell-script-string-comparison-with-wildcards)). 위의 경우 `"[#$ISSUE_TICKET]"` 문자열 뒤에 와일드카드를 둠으로써, 이미 디폴트 커밋 메시지가 Prefix로 시작하지 않을 때에만 `PREFIX` 변수를 설정하도록 해둔 것을 확인할 수 있다.
+
+주의해야할 점은 변수를 비교할 때 single bracket (`[ ]`) 대신 double bracket (`[[ ]]`)을 사용해야한다. 이는 POSIX 표준은 아니지만, 더 편리하게 변수 비교를 하기 위한 일종의 확장이기 때문이다 ([참고](https://www.baeldung.com/linux/bash-single-vs-double-brackets)).
+
 ## 참고
 
 - https://www.atlassian.com/ko/git/tutorials/git-hooks
