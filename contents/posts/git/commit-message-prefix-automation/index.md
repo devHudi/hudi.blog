@@ -24,7 +24,7 @@ Git Hooks 스크립트는 모든 Git 레포지토리에 기본적으로 존재�
 
 prepare-commit-msg는 아래의 **1~3개의 파라미터**를 받는다. 파라미터 순서대로 나열하면 아래와 같다.
 
-1. **COMMIT_EDITMSG 파일 이름**: COMMIT_EDITMSG 파일이란, 우리가 흔히 `git commit` 명령을 실행했을 때 커밋 메시지 작성을 위해 편집하게 되는 파일이다. 기본적으로는 **./git/COMMIT_EDITMSG** 에 생성된다.
+1. **COMMIT_EDITMSG 파일 이름**: `COMMIT_EDITMSG` 파일이란, 우리가 흔히 `git commit` 명령을 실행했을 때 커밋 메시지 작성을 위해 편집하게 되는 파일이다. 기본적으로는 **./git/COMMIT_EDITMSG** 에 생성된다.
 
    ![COMMIT_EDITMSG](2.png)
 
@@ -101,8 +101,6 @@ echo "[#$ISSUE_TICKET] $DEFAULT_COMMIT_MSG" > $COMMIT_EDITMSG_FILE_PATH
 
 ![Merge commit 에도 삽입되는 prefix](./5.png)
 
-Merge commit 에도 삽입되는 prefix
-
 그런데 아직 문제가 존재한다. 우리가 작성한 스크립트는 위와 같이 Merge commit에도 적용된다. 이는 제거하는게 좋을 것 같다. 아래와 같이 스크립트를 개선하자.
 
 ```bash
@@ -115,7 +113,7 @@ CURRENT_BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD)
 ISSUE_TICKET=$(echo "$CURRENT_BRANCH_NAME" | sed 's/.*\///')
 
 COMMIT_SOURCE=$2
-if [ $COMMIT_SOURCE -ne "merge" ]; then
+if [ "$COMMIT_SOURCE" != "merge" ]; then
   PREFIX="[#$ISSUE_TICKET] "
 fi
 
