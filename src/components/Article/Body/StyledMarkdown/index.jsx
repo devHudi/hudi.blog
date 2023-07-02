@@ -20,7 +20,6 @@ const StyledMarkdown = styled.div`
   & > ol,
   & table,
   & blockquote,
-  & pre,
   & img,
   & .katex-display {
     margin-top: 0;
@@ -128,10 +127,6 @@ const StyledMarkdown = styled.div`
     border-bottom: none;
   }
 
-  pre[class*="language-"] {
-    background-color: #1e1e1e;
-  }
-
   & *:not(pre) > code.language-text,
   & table code.language-text {
     position: relative;
@@ -194,11 +189,6 @@ const StyledMarkdown = styled.div`
     ::-webkit-scrollbar-thumb {
       background: ${props => props.theme.colors.scrollHandle};
     }
-  }
-
-  & code[class*="language-"],
-  & pre[class*="language-"] {
-    font-size: 13.5px;
   }
 
   & img {
