@@ -11,6 +11,11 @@ const SEO = ({ title, description, url }) => {
       <meta property="og:title" content={title} />
       <meta property="og:image" content={`${siteUrl}/og-image.png`} />
       {description && <meta property="og:description" content={description} />}
+      <script
+        async
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2692445439426078"
+        crossOrigin="anonymous"
+      ></script>
     </Helmet>
   )
 }
