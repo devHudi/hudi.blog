@@ -16,6 +16,11 @@ const SEO = ({ title, description, url }) => {
         src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2692445439426078"
         crossOrigin="anonymous"
       ></script>
+      <script
+        async
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2692445439426078"
+        crossOrigin="anonymous"
+      ></script>
     </Helmet>
   )
 }

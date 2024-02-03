@@ -4,6 +4,7 @@ import { useSelector } from "react-redux"
 import styled, { useTheme } from "styled-components"
 import { BiLeftArrowAlt, BiRightArrowAlt } from "react-icons/bi"
 import { Utterances } from "utterances-react-component"
+import GoogleAdvertise from "components/GoogleAdsense"
 
 import { utterances } from "../../../../blog-config"
 
@@ -202,6 +203,16 @@ const Footer = ({ previous, next }) => {
       <Bio />
       <CommentWrapper>
         <Divider mt="32px" />
+
+        <GoogleAdvertise
+          client="ca-pub-2692445439426078"
+          slot="2295339271"
+          format="auto"
+          responsive="true"
+        />
+
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+
         <Comment />
       </CommentWrapper>
     </>
