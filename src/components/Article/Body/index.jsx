@@ -17,6 +17,14 @@ const Wrapper = styled.div`
   }
 `
 
+const PostTopAdWrapper = styled.div`
+  margin-bottom: 40px;
+`
+
+const PostBottomAdWrapper = styled.div`
+  margin-top: 40px;
+`
+
 const Body = ({ html }) => {
   const [toc, setToc] = useState([])
 
@@ -36,12 +44,14 @@ const Body = ({ html }) => {
 
       <PrismTheme />
 
-      <GoogleAdvertise
-        client="ca-pub-2692445439426078"
-        slot="2295339271"
-        format="auto"
-        responsive="true"
-      />
+      <PostTopAdWrapper>
+        <GoogleAdvertise
+          client="ca-pub-2692445439426078"
+          slot="2295339271"
+          format="auto"
+          responsive="true"
+        />
+      </PostTopAdWrapper>
 
       <StyledMarkdown
         id="article-body"
@@ -50,12 +60,14 @@ const Body = ({ html }) => {
         ref={ref}
       />
 
-      <GoogleAdvertise
-        client="ca-pub-2692445439426078"
-        slot="2295339271"
-        format="auto"
-        responsive="true"
-      />
+      <PostBottomAdWrapper>
+        <GoogleAdvertise
+          client="ca-pub-2692445439426078"
+          slot="2295339271"
+          format="auto"
+          responsive="true"
+        />
+      </PostBottomAdWrapper>
     </Wrapper>
   )
 }
