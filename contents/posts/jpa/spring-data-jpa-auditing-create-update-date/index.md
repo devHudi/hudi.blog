@@ -2,9 +2,8 @@
 title: "Spring Data JPA Auditing으로 엔티티의 생성/수정 시각 자동으로 기록"
 date: 2022-08-26 22:40:00
 tags:
-  - 학습기록
-  - spring
-  - jpa
+  - Spring
+  - JPA
 ---
 
 ## Auditing?

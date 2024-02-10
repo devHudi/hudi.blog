@@ -2,7 +2,6 @@
 title: "[DB] 트랜잭션(Transaction)"
 date: 2022-05-04 23:30:00
 tags:
-  - 학습기록
   - 데이터베이스
 ---
 

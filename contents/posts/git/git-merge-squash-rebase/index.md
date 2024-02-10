@@ -2,8 +2,7 @@
 title: "Git의 다양한 브랜치 병합 방법 (Merge, Squash & Merge, Rebase & Merge)"
 date: 2022-09-12 02:00:00
 tags:
-  - 학습기록
-  - git
+  - Git
 ---
 
 ## 학습 배경

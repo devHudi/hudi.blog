@@ -2,9 +2,7 @@
 title: "[Java] Stream 개념"
 date: 2022-03-04 18:00:00
 tags:
-  - 학습기록
-  - java
-  - java stream
+  - Java
 ---
 
 ## 학습 동기

@@ -2,10 +2,8 @@
 title: "경쟁 조건의 두 가지 형태: Read-Modify-Write, Check-Then-Act"
 date: 2022-11-06 17:15:00
 tags:
-  - 학습기록
   - 동시성
-  - 경쟁조건
-  - java
+  - Java
 ---
 
 ## 자바 동시성 이슈

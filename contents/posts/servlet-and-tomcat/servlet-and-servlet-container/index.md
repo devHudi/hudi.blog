@@ -2,9 +2,8 @@
 title: "서블릿과 서블릿 컨테이너"
 date: 2022-09-16 23:45:00
 tags:
-  - 학습기록
-  - java
-  - servlet
+  - Java
+  - Servlet
 ---
 
 ## 서블릿과 서블릿 컨테이너

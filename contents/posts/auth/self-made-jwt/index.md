@@ -2,8 +2,8 @@
 title: "직접 만들어보며 이해하는 JWT"
 date: 2022-01-31 04:00:00
 tags:
-  - javascript
-  - jwt
+  - Javascript
+  - JWT
   - node.js
   - 인증/인가
 ---

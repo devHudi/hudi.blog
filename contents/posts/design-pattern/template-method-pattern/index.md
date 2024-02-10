@@ -2,10 +2,9 @@
 title: "템플릿 메소드 패턴 (Template Method Pattern)"
 date: 2022-04-01 15:00:00
 tags:
-  - 학습기록
   - 디자인패턴
   - 객체지향
-  - java
+  - Java
 ---
 
 ## 학습동기

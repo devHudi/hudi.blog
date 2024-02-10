@@ -2,8 +2,7 @@
 title: "Styled Components – 스타일을 품은 컴포넌트"
 date: 2018-07-09
 tags:
-  - 프론트엔드
-  - react
+  - React
 ---
 
 > 이전 블로그 (https://hudi.kr) 에서 이전해온 글 입니다.

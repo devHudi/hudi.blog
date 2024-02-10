@@ -2,10 +2,9 @@
 title: "IntelliJ에서 메소드 추출한 메소드의 파라미터에 final 키워드 자동 추가하기"
 date: 2022-07-12 22:00:00
 tags:
-  - 학습기록
-  - 우아한테크코스
   - 달록
-  - intellij
+  - 도구
+  - IntelliJ
 ---
 
 > 이 글은 우아한테크코스 4기 [달록팀의 기술 블로그](https://dallog.github.io/intellij-final-keyword/)에 게시된 글 입니다.

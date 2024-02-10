@@ -2,9 +2,8 @@
 title: "MySQL 8.0의 공유 락(Shared Lock)과 배타 락(Exclusive Lock)"
 date: 2022-11-08 01:30:00
 tags:
-  - 학습기록
   - 데이터베이스
-  - mysql
+  - MySQL
 ---
 
 > 락의 종류와 전략은 DBMS 벤더사마다 조금씩 다르다. 본 포스팅은 MySQL 8.0 InnoDB 기준으로 설명한다.

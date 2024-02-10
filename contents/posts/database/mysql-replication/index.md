@@ -2,10 +2,8 @@
 title: "데이터베이스의 확장성과 가용성을 위한 MySQL Replication"
 date: 2022-09-22 02:00:00
 tags:
-  - 학습기록
   - 데이터베이스
-  - mysql
-  - 데브옵스
+  - MySQL
 ---
 
 ## 학습 배경

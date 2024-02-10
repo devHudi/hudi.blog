@@ -2,10 +2,8 @@
 title: "대체 왜 DataSource 라우팅이 안되는거야!? (feat. OSIV)"
 date: 2022-10-17 00:00:00
 tags:
-  - 학습기록
-  - jpa
-  - spring
-  - 우아한테크코스
+  - JPA
+  - Spring
   - 달록
 ---
 

@@ -2,8 +2,7 @@
 title: "[Java] 열거 타입 (Enum)"
 date: 2022-03-02 13:00:00
 tags:
-  - 학습기록
-  - java
+  - Java
 ---
 
 ## 학습 동기

@@ -2,7 +2,6 @@
 title: "[DS] 스택 (Stack), 큐 (Queue)"
 date: 2021-07-25
 tags:
-  - 컴퓨터공학
   - 자료구조
 ---
 

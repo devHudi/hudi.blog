@@ -2,9 +2,7 @@
 title: "OpenID(OIDC) 개념과 동작원리"
 date: 2022-07-17 14:40:00
 tags:
-  - 학습기록
   - 네트워크
-  - OpenID
   - 인증/인가
 ---
 

@@ -2,8 +2,6 @@
 title: "REST(Representational State Transfer) API"
 date: 2022-05-04 15:00:00
 tags:
-  - 학습기록
-  - 백엔드
   - REST
 ---
 

@@ -2,7 +2,6 @@
 title: "[DS] 해시테이블 (Hash Table)"
 date: 2021-07-21
 tags:
-  - 컴퓨터공학
   - 자료구조
 ---
 

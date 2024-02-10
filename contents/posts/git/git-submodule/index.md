@@ -2,8 +2,7 @@
 title: "Git Submodule 알아보기"
 date: 2022-07-30 01:30:00
 tags:
-  - 학습기록
-  - git
+  - Git
 ---
 
 ## 학습배경

@@ -2,8 +2,8 @@
 title: "IntelliJ에서 자주 사용하는 코드 Live Template으로 템플릿화 하기"
 date: 2022-08-26 16:00:00
 tags:
-  - 학습기록
-  - intellij
+  - 도구
+  - IntelliJ
 ---
 
 ## Live Template

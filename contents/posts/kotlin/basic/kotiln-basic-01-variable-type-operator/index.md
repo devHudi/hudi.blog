@@ -3,7 +3,6 @@ title: "코틀린 기초 (1) - 변수, 널 가능성, 타입, 연산자"
 date: 2022-12-22 15:50:00
 series: "코틀린 기초 학습"
 tags:
-  - 학습기록
   - Kotlin
 ---
 
@@ -18,7 +17,6 @@ tags:
 #### val
 
 value에서 따온 키워드로, 변경 불가능한(immutable) 참조를 저장하는 변수이다. 자바의 `final` 과 동일하다. 자바 `final` 키워드와 마찬가지로, 참조가 변경이 불가능한 것이지 객체의 불변을 보장하지 않으므로 참고하자.
-
 
 #### var
 
@@ -36,7 +34,7 @@ val c = 3 // Int로 타입 추론
 val d = 3L // Long으로 타입 추론
 ```
 
-단, 타입을 명시하지 않은 상태로 초기화 식을 작성하지 않을 수 없다. 또는  아래의 경우에는 `This variable must either have a type annotation or be initialized` 라는 에러가 발생한다.
+단, 타입을 명시하지 않은 상태로 초기화 식을 작성하지 않을 수 없다. 또는 아래의 경우에는 `This variable must either have a type annotation or be initialized` 라는 에러가 발생한다.
 
 ```kotlin
 val e
@@ -48,7 +46,7 @@ val e
 val f: Int
 ```
 
-위 코드는 `Variable 'f' must be initialized` 라는 에러가 발생한다. 코틀린은 초기화 되지 않은 변수를 일반적인 방법으로는 사용할 수 없다. 즉, 변수를 사용하기 위해서는 반드시 초기화 해줘야한다. 
+위 코드는 `Variable 'f' must be initialized` 라는 에러가 발생한다. 코틀린은 초기화 되지 않은 변수를 일반적인 방법으로는 사용할 수 없다. 즉, 변수를 사용하기 위해서는 반드시 초기화 해줘야한다.
 
 ### 원시 타입
 
@@ -92,7 +90,6 @@ fun getLength(text: String?): Int? {
 ```
 
 > Only safe (?.) or non-null asserted (!!.) calls are allowed on a nullable receiver of type Int?
-> 
 
 왜 그럴까? 코틀린의 타입 시스템은 널 참조 위험을 제거하는 것을 목표로 설계되었다. 위 코드에서 `text` 는 null이 될 가능성을 가지고 있다. `?` 를 사용하여 Nullable로 만들었기 때문이다.
 
@@ -102,7 +99,7 @@ public int getLength(String text) {
 }
 ```
 
-위 코드가 자바코드라면 위와 같을 것이다. 이때, 파라미터 `text` 에 null이 들어와 NullPointerException이 발생할수도 있다. 코틀린은 이 위험성 없애기 위해 컴파일 단계에서 에러를 발생시킨다. 
+위 코드가 자바코드라면 위와 같을 것이다. 이때, 파라미터 `text` 에 null이 들어와 NullPointerException이 발생할수도 있다. 코틀린은 이 위험성 없애기 위해 컴파일 단계에서 에러를 발생시킨다.
 
 ### 안전한 호출 연산자 (Safe Call)
 
@@ -126,7 +123,7 @@ fun main() {
 위 예제처럼 Safe Call을 사용하여 널 참조 위험을 제거하였다. 엘비스 연산자를 사용하면 이를 좀 더 개선해볼 수 있다. 엘비스 연산자는 `?:` 문자로 사용한다. 엘비스 연산자를 사용하면, 연산자 좌항의 결과가 null 이라면 우항의 식을 사용하도록 할 수 있다. (자바스크립트의 `||` 연산자와 비슷하다)
 
 ```kotlin
-fun getLength(text: String?): Int? { 
+fun getLength(text: String?): Int? {
     return text?.length ?: 0
 }
 
@@ -141,7 +138,7 @@ fun main() {
 코틀린에서는 `return` 이나 `throw` 도 식이다. 따라서 엘비스 연산자 우측에도 위치시킬 수 있다. 위 `getLength` 함수에서 `null` 이 들어오면 예외를 던지게 하고 싶은 경우 아래와 같이 코드를 작성할 수도 있다.
 
 ```kotlin
-fun getLength(text: String?): Int? { 
+fun getLength(text: String?): Int? {
     return text?.length
         ?: throw IllegalArgumentException("null은 올 수 없습니다.")
 }
@@ -163,7 +160,7 @@ public int foo(int number) {
     if (number == null) {
         return 0
     }
-    
+
     // ...
 }
 ```
@@ -188,7 +185,6 @@ fun getLength2(text: String?): Int? {
 위와 같이 사용할 수 있다.
 
 > 참고로 코틀린 컴파일러 개발자는 일부러 컴파일러에게 무례하게 소리치는 것 처럼 보이도록 느낌표 두개로 널 아님 단언 연산자를 만들었다고 한다. 개발자에게 **널 아님 단언을 하는 것 보다 더 좋은 방법을 찾아보라는 의도**라고 한다.
-> 
 
 ### 플랫폼 타입
 
@@ -235,7 +231,7 @@ val a: Int = 5
 val b: Long = a // Type mismatch.
 ```
 
-코틀린은 기본 타입을 다른 여러 타입으로 변환할 수 있는 메소드를 지원한다. 
+코틀린은 기본 타입을 다른 여러 타입으로 변환할 수 있는 메소드를 지원한다.
 
 ![](./01.png)
 
@@ -259,10 +255,8 @@ fun printName(obj: Any) {
 위 처럼 `as` 를 사용하여 타입을 캐스팅한 모습을 확인할 수 있다.
 
 > `Any` 라는 타입을 사용했는데, 이는 자바의 `Object` 와 비슷하게 모든 코틀린 클래스의 Superclass이다.
-> 
 
 > `is` 는 자바의 `instanceof` 와 동일한 기능을 수행하며, 특정 인스턴스의 타입을 비교할 때 사용한다. `is` 를 반대로 사용하고 싶다면 `!is` 로 사용한다.
-> 
 
 또한 위 코드에서는 굳이 타입 캐스팅을 명시해주지 않아도 된다. 코틀린에서는 스마트 캐스트라는 것을 지원한다. 스마트 캐스트는 코틀린 컴파일러가 코드의 문맥을 파악하고, 앞서 타입이 체크되었다면 굳이 캐스트를 하지 않아도 되게끔 만들어준다. 따라서 아래와 같이 만들 수 있을 것이다.
 

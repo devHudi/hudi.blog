@@ -2,8 +2,7 @@
 title: "Git 브랜치 전략 (feat. Git Flow, Github Flow)"
 date: 2022-08-03 02:00:00
 tags:
-  - 학습기록
-  - git
+  - Git
 ---
 
 ## 브랜치

@@ -2,9 +2,7 @@
 title: "어노테이션 기반 DI 컨테이너 구현하기"
 date: 2022-09-27 22:00:00
 tags:
-  - 학습기록
-  - spring
-  - 우아한테크코스
+  - Spring
 ---
 
 > 본 포스팅은 우아한테크코스 4기 백엔드 **[DI 컨테이너 구현하기](https://github.com/woowacourse/jwp-hands-on/tree/main/di)** 실습 수행 과정을 정리한 내용이다.

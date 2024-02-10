@@ -2,9 +2,8 @@
 title: 스프링에서 Argument Resolver 사용하기
 date: 2022-06-04 12:50:00
 tags:
-  - 학습기록
-  - spring
-  - java
+  - Spring
+  - Java
 ---
 
 컨트롤러에서 쿼리 스트링을 변수에 바인딩하려면 `@RequestParam` 을, 가변적인 경로를 변수에 바인딩하려면 `@PathVariable` 을, HTTP Body를 변수에 바인딩하려면 `@RequestBody` 를 사용해야한다.

@@ -3,7 +3,6 @@ title: "코틀린 기초 (4) - 클래스, 인터페이스"
 date: 2023-01-04 18:50:00
 series: "코틀린 기초 학습"
 tags:
-  - 학습기록
   - Kotlin
 ---
 
@@ -147,7 +146,7 @@ class Member(val email: String, var username: String) {
 }
 ```
 
-코틀린에서는 위 기능을 **커스텀 접근자 (Custom Getter)**를 사용하여 다른 방법으로 구현할 수 있다. 커스텀 접근자는 단순히 값을 반환하는 것이 아니라 **어떠한 연산을 수행한 그 결과값(계산된 결과)을 반환할 때 사용**한다. 
+코틀린에서는 위 기능을 **커스텀 접근자 (Custom Getter)**를 사용하여 다른 방법으로 구현할 수 있다. 커스텀 접근자는 단순히 값을 반환하는 것이 아니라 **어떠한 연산을 수행한 그 결과값(계산된 결과)을 반환할 때 사용**한다.
 
 ```kotlin
 class Member(val email: String, var username: String) {
@@ -167,7 +166,7 @@ val member = Member("devhudi@gmail.com")
 member.isAnonymous
 ```
 
-커스텀 접근자를 사용하여, **필드 자기 자신의 실제 값을 가공하여 반환**할수도 있다. 아래와 같이 `**field` 라는 키워드**를 사용하여 필드 자기 자신에 접근하고, `uppercase()` 메소드를 호출하여 전부 대문자로 만든뒤에 반환하는 `get()` 을 정의해주었다. 
+커스텀 접근자를 사용하여, **필드 자기 자신의 실제 값을 가공하여 반환**할수도 있다. 아래와 같이 `**field` 라는 키워드\*\*를 사용하여 필드 자기 자신에 접근하고, `uppercase()` 메소드를 호출하여 전부 대문자로 만든뒤에 반환하는 `get()` 을 정의해주었다.
 
 ```kotlin
 class Member(val email: String, username: String) {
@@ -188,7 +187,6 @@ println(member.username) // "DEVHUDI
 분명 `member` 프로퍼티엔 ‘devHudi’ 라는 값이 저장되어 있지만, 접근자는 대문자로 변환한뒤 반환하기 때문에 위와 같은 결과를 얻을 수 있다. 이때 `field` 키워드를 Backing Field 라고 부른다.
 
 > Custom Setter도 동일한 방법으로 사용할 수 있지만, Setter 자체를 지양하므로 생략한다.
-> 
 
 ### 클래스 상속하기
 
@@ -203,7 +201,7 @@ open class Vehicle(
 }
 ```
 
-위와 같이 `Vehicle` 이라는 탈 것 클래스가 존재한다. 코틀린은 기본적으로 클래스가 final이므로, `open` 키워드를 앞에 붙여 상속이 가능하도록 만들어야한다. 이 클래스를 상속받는 `Car` 클래스를 만들어보자. 
+위와 같이 `Vehicle` 이라는 탈 것 클래스가 존재한다. 코틀린은 기본적으로 클래스가 final이므로, `open` 키워드를 앞에 붙여 상속이 가능하도록 만들어야한다. 이 클래스를 상속받는 `Car` 클래스를 만들어보자.
 
 ```kotlin
 class Car(
@@ -252,7 +250,7 @@ class SixWheeler(
 
 자바에서 중첩 클래스를 만드는 방법은 `static` 의 유무에 따라 크게 2가지로 나뉜다. 내부 클래스에 `static` 을 붙이지 않으면, 내부 클래스에서 외부 클래스를 접근할 수 있다. 반대로 `static` 을 붙이면, 내부 클래스에서 외부 클래스를 접근할 수 없다.
 
-코틀린에서는 반대이다. 코틀린에서는 **내부 클래스에 아무 키워드도 사용하지 않으면, 기본적으로 Static 내부 클래스**로 정의된다. 
+코틀린에서는 반대이다. 코틀린에서는 **내부 클래스에 아무 키워드도 사용하지 않으면, 기본적으로 Static 내부 클래스**로 정의된다.
 
 ```kotlin
 class Outer {
@@ -287,7 +285,7 @@ interface Drivable {
     fun ride() {
         println("탈것 올라탐")
     } // 디폴트 메소드
-    
+
     fun move() // 추상 메소드
 }
 ```
@@ -328,7 +326,7 @@ interface FuelRequired {
     fun printFuel() {
         println("연료량: $fuel") // 인터페이스 프로퍼티 사용
     }
-    
+
     fun fuelUp()
 }
 
@@ -368,7 +366,7 @@ object Singleton {
 Singleton.say() // I am singletone
 ```
 
-`object` 키워드로 선언된 싱글톤 객체는 별도의 생성없이 위와 같이 사용할 수 있다. 
+`object` 키워드로 선언된 싱글톤 객체는 별도의 생성없이 위와 같이 사용할 수 있다.
 
 ## 동반 객체 (Companion Object)
 
@@ -379,7 +377,7 @@ Singleton.say() // I am singletone
 ```kotlin
 class Member (
     val name: String
-) { 
+) {
     companion object {
         fun createAnonymous(): Member {
             return Member("anonymous")
@@ -400,7 +398,7 @@ val member2 = Member.Companion.createAnonymous()
 ```kotlin
 class Member (
     val name: String
-) { 
+) {
     companion object Factory {
         fun createAnonymous(): Member {
             return Member("anonymous")
@@ -420,15 +418,15 @@ val member1 = Member.Factory.createAnonymous()
 ```kotlin
 class Member (
     val name: String
-) { 
+) {
     companion object Factory {
         const val ANONYMOUS_NAME = "anonymous"
-        
+
         fun createAnonymous(): Member {
             return Member(ANONYMOUS_NAME)
         }
     }
-    
+
     fun printAnonymous() {
         println(ANONYMOUS_NAME)
     }
@@ -436,7 +434,6 @@ class Member (
 ```
 
 > 참고로 `const` 키워드를 사용하면, 변수에 대입되는 값이 컴파일 타임에 대입되게 된다 (사용하지 않으면, 런타임에 대입됨). `const` 키워드는 String과 원시 타입에만 사용할 수 있다.
-> 
 
 **클래스 맴버는 동반 객체 멤버에 접근할 수 있으므로**, 위와 같이 상수를 기존 자바처럼 자유롭게 활용하면 된다.
 
@@ -446,13 +443,11 @@ class Member (
 
 ## Data Class
 
-코틀린은 데이터를 담고 있는 클래스를 정의하기 위한 `data` 키워드를 별도로 제공한다. `data` 키워드를 사용하여 클래스를 정의하면, `toString()` , `hashCode()` , `equals()` , `copy()` , `componentN()` 메소드를 자동으로 만들어준다. 
+코틀린은 데이터를 담고 있는 클래스를 정의하기 위한 `data` 키워드를 별도로 제공한다. `data` 키워드를 사용하여 클래스를 정의하면, `toString()` , `hashCode()` , `equals()` , `copy()` , `componentN()` 메소드를 자동으로 만들어준다.
 
 > `copy()` 메소드는 프로퍼티를 복사하여 새로운 인스턴스를 생성하는 즉, 깊은 복사를 할 수 있다.
-> 
 
 > `componentN()` 메소드는 코틀린의 구조분해를 위해 정의하는 메소드이다. 이는 다른 포스팅에서 더 자세히 다뤄보겠다.
-> 
 
 ```kotlin
 data class MemberResponse(
@@ -511,7 +506,7 @@ class Blue: Color("파랑")
 
 fun main() {
     val color: Color = Green()
-    
+
     when (color) {
         is Red -> TODO()
         is Green -> TODO()

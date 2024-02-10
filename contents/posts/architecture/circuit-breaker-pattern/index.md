@@ -2,8 +2,7 @@
 title: "MSA 환경에서 장애 전파를 막기 위한 서킷 브레이커 패턴"
 date: 2023-04-17 00:15:00
 tags:
-  - 학습기록
-  - 아키텍처
+  - 시스템설계
   - MSA
 ---
 
@@ -52,7 +51,6 @@ MSA 환경은 클라이언트의 요청이 수개의 서비스를 거쳐 응답�
 서킷 브레이커 패턴은 다양한 방식으로 구현할 수 있다. 물론 직접 처음부터 구현하는 방식도 있지만, 넷플릭스의 Hystrix 혹은 Resilience4j 와 같은 라이브러리를 사용할 수 있다. 또는 인프라 관점에서 Nginx, Envoy 와 같은 프록시를 사용하여 구현해볼수도 있다.
 
 > [Hystrix is no longer in active development, and is currently in maintenance mode.](https://github.com/Netflix/Hystrix)
-> 
 
 Hystrix는 공식문서에 의하면, 현재 개발이 중단된 상황이다. 따라서 본 포스팅에서는 **Resilience4j**를 사용하여 서킷 브레이커를 구현해본다.
 

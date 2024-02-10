@@ -2,8 +2,6 @@
 title: "Access Token의 문제점과 Refresh Token"
 date: 2022-08-23 20:00:00
 tags:
-  - 학습기록
-  - 네트워크
   - 인증/인가
 ---
 

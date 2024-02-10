@@ -2,9 +2,8 @@
 title: "Spring HandlerInterceptor를 활용하여 컨트롤러 중복 코드 제거하기"
 date: 2022-05-28 01:00:00
 tags:
-  - 학습기록
-  - spring
-  - java
+  - Spring
+  - Java
 ---
 
 우아한테크코스 레벨2 마지막 미션인 장바구니 미션에서 인증과 인가를 구현하기 위해, Spring Interceptor 를 사용해야했다. 이를 위해 학습한 내용을 정리해보았다.

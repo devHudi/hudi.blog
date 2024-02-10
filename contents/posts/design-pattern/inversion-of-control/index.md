@@ -2,7 +2,6 @@
 title: "제어의 역전 (Inversion Of Control, IoC)"
 date: 2022-04-22 23:45:00
 tags:
-  - 학습기록
   - 객체지향
   - 디자인패턴
 ---

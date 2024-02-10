@@ -2,9 +2,8 @@
 title: "Spring Data JPA에서의 페이지네이션과 정렬"
 date: 2022-08-29 23:00:00
 tags:
-  - 학습기록
-  - spring
-  - jpa
+  - Spring
+  - JPA
 ---
 
 ## 페이지네이션 (Pagination)

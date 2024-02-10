@@ -2,8 +2,7 @@
 title: "Java 에서 final 키워드 사용하기"
 date: 2022-02-16 17:15:00
 tags:
-  - 학습기록
-  - java
+  - Java
 ---
 
 ![](./thumbnail.png)

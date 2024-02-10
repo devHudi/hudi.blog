@@ -2,11 +2,9 @@
 title: "Redis로 분산 락을 구현해 동시성 이슈를 해결해보자!"
 date: 2022-11-13 18:30:00
 tags:
-  - 학습기록
   - 동시성
-  - java
-  - redis
-  - 분산락
+  - Java
+  - Redis
 ---
 
 ## 분산 락이란?
@@ -35,7 +33,6 @@ tags:
 ## 선착순 행사 참여 애플리케이션 만들기
 
 > Getter, ToString, 기본 생성자, DTO 코드 등 중요하지 않은 부분은 생략한다.
-> 
 
 ### 사용된 기술
 
@@ -63,7 +60,7 @@ public class Event {
     private List<EventTicket> eventTickets;
 
     // ...
-    
+
     public boolean isClosed() {
         return eventTickets.size() >= ticketLimit;
     }
@@ -238,7 +235,6 @@ public class RedisLockRepository {
 ### EventService
 
 > 당연히, EventService에서 redisLockRepository 을 주입받아야 한다.
-> 
 
 아래는 기존의 `createEventTicket()` 메소드에 스핀 락을 적용한 소스코드이다. while 문을 활용해 락을 획득할 때 까지 무한 반복을 돈다. 레디스 서버에 부하를 덜기 위해 반복마다 100ms 쉬어준다. 임계 영역에 진입한 후 비즈니스 로직을 처리하고 나서는 finally 블럭을 사용해 락을 해제해준다. 락을 해제해주지 않으면 다른 쓰레드에서 임계영역에 진입하지 못하므로 주의하자.
 
@@ -361,10 +357,9 @@ public EventTicketResponse createEventTicket(final Long eventId) {
 
 `redissonClient.getLock()` 을 통해 락을 획득하고, `tryLock()` 을 통해 락 획득을 시도한다. 락 획득을 성공하면 임계 영역에 진입하여 비즈니스 로직을 실행하고, finally 블럭에서 `unlock()` 한다.
 
-락 획득을 실패하였으면, 끊임없이 레디스 서버에 재확인하는것이 아니라 대기 상태로 들어가 메시지가 오기를 기다린다. 
+락 획득을 실패하였으면, 끊임없이 레디스 서버에 재확인하는것이 아니라 대기 상태로 들어가 메시지가 오기를 기다린다.
 
 > 비즈니스 위 아래로 비즈니스와 관련없는 코드가 존재하는 문제는 나중에 Facade나 AOP로 해결할 수 있지 않을까 싶다. 지금은 그것이 중요한건 아니므로 넘어간다.
-> 
 
 ### 장점과 단점
 

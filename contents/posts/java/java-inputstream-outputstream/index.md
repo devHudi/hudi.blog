@@ -2,8 +2,7 @@
 title: "Java에서 스트림을 사용한 입출력 (InputStream, OuputStream)"
 date: 2022-09-01 22:40:00
 tags:
-  - 학습기록
-  - java
+  - Java
 ---
 
 ## 학습 배경

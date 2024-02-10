@@ -2,10 +2,7 @@
 title: "달록의 Jacoco 적용기 (feat. Gradle)"
 date: 2022-08-16 02:00:00
 tags:
-  - 학습기록
-  - 데브옵스
-  - 코드커버리지
-  - jacoco
+  - 테스트
 ---
 
 > 이 글은 우아한테크코스 4기 [달록팀의 기술 블로그](https://dallog.github.io/dallog-jacoco)에 게시된 글 입니다.

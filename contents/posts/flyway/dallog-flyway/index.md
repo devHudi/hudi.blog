@@ -2,10 +2,8 @@
 title: "달록의 데이터베이스 마이그레이션을 위한 Flyway 적용기"
 date: 2022-09-08 01:30:00
 tags:
-  - 학습기록
-  - 데브옵스
-  - flyway
-  - 우아한테크코스
+  - Flyway
+  - 데이터베이스
   - 달록
 ---
 
@@ -256,7 +254,7 @@ Flyway의 핵심 기능입니다. 마이그레이션 스크립트의 최신 버�
 
 모든 마이그레이션 스크립트가 실행된 이후 실행되는 스크립트 입니다. Repeatable Migrations 끼리는 description 순서대로 실행됩니다. **한번 실행되며, 파일이 변경되어 체크섬이 변경되면 또 실행**됩니다.
 
-## flyway\_schema\_history
+## flyway_schema_history
 
 ![](./flyway_schema_history.png)
 

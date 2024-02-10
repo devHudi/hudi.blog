@@ -2,11 +2,10 @@
 title: "생성자에 매개변수가 많다면 빌더를 고려하라"
 date: 2022-02-25 10:00:00
 tags:
-  - 학습기록
   - 디자인패턴
   - 객체지향
   - 이펙티브자바
-  - java
+  - Java
 series: Effective Java 3/E 학습 기록
 ---
 

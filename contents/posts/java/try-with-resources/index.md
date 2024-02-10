@@ -2,8 +2,7 @@
 title: "[Java] try-with-resources"
 date: 2022-04-19 23:00:00
 tags:
-  - 학습기록
-  - java
+  - Java
 ---
 
 ## 학습동기

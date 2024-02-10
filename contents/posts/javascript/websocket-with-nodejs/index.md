@@ -2,9 +2,9 @@
 title: "채팅서비스를 구현하며 배워보는 Websocket 원리 (feat. node.js)"
 date: 2022-01-27 19:00:00
 tags:
-  - websocket
+  - Websocket
   - 네트워크
-  - javascript
+  - Javascript
   - node.js
   - express
 ---

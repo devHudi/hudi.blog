@@ -2,8 +2,7 @@
 title: "[Java] Collection 을 복사하는 여러 방법"
 date: 2022-02-28
 tags:
-  - 학습기록
-  - java
+  - Java
 ---
 
 ## 학습 동기

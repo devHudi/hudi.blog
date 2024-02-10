@@ -2,12 +2,9 @@
 title: "Jenkins와 Nginx로 스프링부트 애플리케이션 무중단 배포하기"
 date: 2022-10-03 14:45:00
 tags:
-  - 학습기록
-  - 데브옵스
   - 배포
-  - 무중단배포
-  - jenkins
-  - nginx
+  - Jenkins
+  - Nginx
 ---
 
 ## 무중단 배포가 왜 필요할까?

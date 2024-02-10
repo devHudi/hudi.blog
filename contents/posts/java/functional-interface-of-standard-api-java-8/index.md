@@ -2,8 +2,7 @@
 title: "자바 8 표준 API의 함수형 인터페이스 (Consumer, Supplier, Function, Operator, Predicate)"
 date: 2022-03-05 01:00:00
 tags:
-  - 학습기록
-  - java
+  - Java
 ---
 
 > 이 글은 이것이 자바다의 내용을 참고하여 작성되었다.

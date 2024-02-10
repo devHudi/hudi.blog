@@ -2,14 +2,11 @@
 title: "젠킨스 분산 빌드 아키텍처 구축"
 date: 2022-10-21 01:15:00
 tags:
-  - 데브옵스
-  - jenkins
-  - 우아한테크코스
+  - Jenkins
   - 달록
 ---
 
 > 이 글은 우아한테크코스 4기 [달록팀의 기술 블로그](https://dallog.github.io/jenkins-distributed-build-architecture)에 게시된 글 입니다.
-
 
 ## ⛳️ 젠킨스 빌드 최적화를 향한 여정
 

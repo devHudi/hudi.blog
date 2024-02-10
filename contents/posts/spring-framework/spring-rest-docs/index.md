@@ -2,11 +2,9 @@
 title: "Spring REST Docs를 사용한 API 문서 자동화"
 date: 2022-08-22 14:30:00
 tags:
-  - 학습기록
-  - spring
-  - rest docs
+  - Spring
+  - REST Docs
   - 달록
-  - 우아한테크코스
 ---
 
 ## API 문서 자동화

@@ -2,9 +2,8 @@
 title: Spring Boot와 Redis를 사용하여 Refresh Token 구현하기
 date: 2022-08-26 15:30:00
 tags:
-  - 학습기록
-  - spring
-  - redis
+  - Spring
+  - Redis
   - 인증/인가
 ---
 

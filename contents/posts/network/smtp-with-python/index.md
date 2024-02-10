@@ -3,9 +3,7 @@ title: "파이썬 소켓으로 직접 구현하는 SMTP 프로토콜"
 date: 2021-11-20
 tags:
   - 네트워크
-  - tcp
-  - python
-  - socket
+  - Python
 ---
 
 ![](./1.png)

@@ -2,8 +2,7 @@
 title: "[Java] Objects.requireNonNull 은 왜 사용할까?"
 date: 2022-03-15 17:00:00
 tags:
-  - 학습기록
-  - java
+  - Java
 ---
 
 ## 학습 동기

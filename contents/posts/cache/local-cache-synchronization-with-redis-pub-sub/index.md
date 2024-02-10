@@ -2,8 +2,7 @@
 title: "분산 환경에서 Redis pub/sub을 활용한 로컬 캐시 동기화"
 date: 2022-11-17 16:20:00
 tags:
-  - 학습기록
-  - redis
+  - Redis
   - 캐시
 ---
 
@@ -26,7 +25,6 @@ tags:
 이 구조에서는 scale-out된 모든 애플리케이션 서버가 Publisher이자 Consumer가 된다. 그리고 **한 서버의 로컬 캐시가 갱신되면 그 사실을 다른 모든 애플리케이션 서버에 브로드캐스트** 하는 방식이다. 브로드캐스트할 때 **갱신된 캐시의 키**를 메시지로 전달한다.
 
 > 💡 **Pub/Sub과 Producer/Consumer의 차이점**: 나는 Pub/Sub과 Producer/Consumer가 비슷하거나 거의 동일한 개념이라고 착각하고 있었다. Pub/Sub 모델은 특정 채널에 publisher가 메시지를 발행(publish)하면 그 채널을 구독하고 있는 모든 subscriber에게 메시지를 브로드캐스트한다. 즉, 모든 구독자가 메시지를 수신한다. 반면, Producer/Consumer 모델의 경우 producer가 한번 발행한 메시지(이벤트)를 가장 먼저 consume한 consumer만 해당 메시지를 읽을 수 있다. 즉, 작업이 한번만 실행되도록 하고싶을 때 사용한다. 자세한 내용은 기회가 될 때 별도의 포스팅으로 풀어보겠다. ([참고1](https://stackoverflow.com/questions/42471870/publish-subscribe-vs-producer-consumer), [참고2](https://stackoverflow.com/questions/42471870/publish-subscribe-vs-producer-consumer), [참고3](https://medium.com/frientrip/pub-sub-%EC%9E%98-%EC%95%8C%EA%B3%A0-%EC%93%B0%EC%9E%90-de9dc1b9f739))
-> 
 
 ### 방법1 - 변경된 키-데이터 쌍을 브로드캐스트
 
@@ -210,13 +208,13 @@ public class RankingService {
 }
 ```
 
-`getRanking()` 은 특정 `id` 의 랭킹을 가져오는 메소드이다. `@Cacheable` 을 사용해 캐싱했다. 
+`getRanking()` 은 특정 `id` 의 랭킹을 가져오는 메소드이다. `@Cacheable` 을 사용해 캐싱했다.
 
 `updateRanking()` 메소드는 랭킹 도메인을 업데이트 하면서, `redisPublisher` 를 사용하여 `"ranking-invalidation"` 채널에 메시지를 발행한다. 이 메시지를 바로 위에서 이야기한 `RedisSubscriber` 가 받아 `"ranking"` 캐시를 evict 한다.
 
 ### 실제 동작 확인
 
-실제로 여러개의 애플리케이션 프로세스를 띄워 테스트 해보면, 한 곳에서 update 가 발생하였을 경우 다른 모든 애플리케이션 프로세스에서도 캐시를 무효화시켜 최신 데이터를 가져오는 것을 확인할 수 있다. 
+실제로 여러개의 애플리케이션 프로세스를 띄워 테스트 해보면, 한 곳에서 update 가 발생하였을 경우 다른 모든 애플리케이션 프로세스에서도 캐시를 무효화시켜 최신 데이터를 가져오는 것을 확인할 수 있다.
 
 ## 더 학습해볼 키워드/주제
 

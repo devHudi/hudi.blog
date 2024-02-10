@@ -2,11 +2,9 @@
 title: "HTTPS 간단히 알아보기"
 date: 2022-07-30 21:30:00
 tags:
-  - 학습기록
   - 네트워크
-  - http
-  - https
-  - ssl
+  - HTTP
+  - SSL
 ---
 
 ## HTTP의 문제점

@@ -2,8 +2,7 @@
 title: "[Java] Comparable 과 Comparator"
 date: 2022-03-05 02:00:00
 tags:
-  - 학습기록
-  - java
+  - Java
 ---
 
 ## 학습 동기

@@ -2,8 +2,7 @@
 title: "Nginx와 Let's Encrypt로 HTTPS 웹 서비스 배포하기 (feat. Certbot)"
 date: 2022-07-31 20:00:00
 tags:
-  - 학습기록
-  - nginx
+  - Nginx
 ---
 
 ## 목표

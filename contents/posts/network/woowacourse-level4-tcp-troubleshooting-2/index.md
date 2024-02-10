@@ -4,10 +4,8 @@ date: 2022-09-06 19:00:00
 series: "HTTP 서버 구현 미션 트러블 슈팅"
 tags:
   - 네트워크
-  - tcp
-  - socket
-  - http
-  - java
+  - HTTP
+  - Java
 ---
 
 ## 배경

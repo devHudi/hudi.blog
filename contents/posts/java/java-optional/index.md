@@ -2,8 +2,7 @@
 title: "[Java] Optional"
 date: 2022-03-20 01:21:00
 tags:
-  - 학습기록
-  - java
+  - Java
 ---
 
 ## 학습 동기

@@ -2,10 +2,9 @@
 title: "스프링에서 HTTP 캐시를 사용하기 위한 여러가지 방법"
 date: 2022-09-03 19:30:00
 tags:
-  - 학습기록
-  - spring
-  - java
-  - http
+  - Spring
+  - Java
+  - HTTP
 ---
 
 ## 학습 배경

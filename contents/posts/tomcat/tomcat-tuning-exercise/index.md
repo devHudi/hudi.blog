@@ -2,8 +2,7 @@
 title: 톰캣 튜닝 맛보기 - maxConnections, acceptCount, maxThreads
 date: 2022-09-09 01:45:00
 tags:
-  - 학습기록
-  - tomcat
+  - Tomcat
 ---
 
 ## 학습 배경

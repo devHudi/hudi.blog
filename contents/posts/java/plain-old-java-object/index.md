@@ -2,9 +2,8 @@
 title: "POJO (Plain Old Java Object)"
 date: 2022-05-05 01:00:00
 tags:
-  - 학습기록
   - 객체지향
-  - java
+  - Java
 ---
 
 ## POJO

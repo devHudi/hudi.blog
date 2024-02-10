@@ -2,8 +2,7 @@
 title: "JPA의 낙관적 락과 비관적 락을 통해 엔티티에 대한 동시성 제어하기"
 date: 2022-11-08 15:45:00
 tags:
-  - 학습 기록
-  - jpa
+  - JPA
 ---
 
 > 설명된 트랜잭션 격리 수준과 락에 대한 대부분의 내용은 MySQL 8.0을 기준으로 하고 있다.
@@ -117,7 +116,7 @@ LockModeType을 통해서 락 옵션을 변경할 수 있다.
 - **동작** : 트랜잭션을 커밋하는 시점에 버전정보를 체크한다.
 - **이점** : 애플리케이션 레벨에서 DIRTY READ와 NON-REPEATABLE READ를 방지한다.
 
-### OPTIMISTIC\_FORCE\_INCREMENT
+### OPTIMISTIC_FORCE_INCREMENT
 
 낙관적 락을 사용하면서 버전 정보를 강제로 증가한다. 엔티티가 물리적으로 변경되지 않았지만, 논리적으로는 변경되었을 경우 버전을 증가하고 싶을 때 사용한다.
 
@@ -149,7 +148,7 @@ LockModeType을 통해서 락 옵션을 변경할 수 있다.
 
 - 동작 : `SELECT ... FOR SHARE` (`LOCK IN SHARE MODE`)
 
-### PESSIMISTIC\_FORCE\_INCREMENT
+### PESSIMISTIC_FORCE_INCREMENT
 
 비관적 락 중 유일하게 버전 정보를 사용한다. 비관적 락이지만 버전 정보를 강제적으로 증가시킨다. 하이버네이트의 경우 `nowait` 를 지원하는 데이터베이스에 대해서 `FOR UPDATE NOWAIT` 옵션을 적용하고, 그렇지 않다면 `FOR UPDATE` 를 적용한다.
 

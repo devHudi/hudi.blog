@@ -2,8 +2,7 @@
 title: "ELK Stack 훑어보기"
 date: 2023-02-19 03:00:00
 tags:
-  - 학습기록
-  - ELK Stack
+  - ELK
 ---
 
 ![](./elk-stack.svg)

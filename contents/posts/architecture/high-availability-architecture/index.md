@@ -2,9 +2,7 @@
 title: "고가용성을 확보하기 위한 아키텍처 설계"
 date: 2022-10-10 12:45:00
 tags:
-  - 학습기록
-  - 데브옵스
-  - 아키텍처
+  - 시스템설계
 ---
 
 ## 학습 배경
@@ -15,17 +13,18 @@ tags:
 
 위에서 이야기했듯 가용성이란 정체 서비스 운영 중 서비스가 **정상적으로 동작하는 비율**이 얼마나 되는지 **시간 측면**의 관점으로 설명하는 지표이다. 즉, 시스템의 **신뢰도**를 평가할 때 사용되는 중요한 지표이다. 예를 들어 100일을 운영한 서비스가 총 1일간 제대로 동작하지 않았다면, 이 서비스의 가용성은 99%이다. 이를 수식으로 나타내면 아래와 같다.
 
-$$$
+$$
 
 Availability = \frac{uptime}{uptime + downtime}
 
-$$$
+
+$$
 
 위 수식에서 $uptime$은 이용 가능 시간, $downtime$은 이용 불가 시간을 의미한다.
 
 ### 고가용성 (High Availability, HA)
 
-가용성이 높은 서비스를 가리켜 고가용성의 서비스라고 이야기한다. 고가용성이란 말 그대로 높은 가용성을 확보한 상태를 의미한다. 고가용성의 서비스는 상당히 오랜 시간동안 장애 없이 안정적으로 운영할 수 있다. 고가용성의 가용한 시간을 일반적으로 **9s(nines)** 라는 표현 방식을 사용한다. 
+가용성이 높은 서비스를 가리켜 고가용성의 서비스라고 이야기한다. 고가용성이란 말 그대로 높은 가용성을 확보한 상태를 의미한다. 고가용성의 서비스는 상당히 오랜 시간동안 장애 없이 안정적으로 운영할 수 있다. 고가용성의 가용한 시간을 일반적으로 **9s(nines)** 라는 표현 방식을 사용한다.
 
 9s에서 one nine은 90%를, two nine은 99%를 의미한다. 이를 정리한 표가 영문 위키 백과 **[High availability](https://en.wikipedia.org/wiki/High_availability)** 문서에 존재한다. 그 표를 가져와보았다.
 
@@ -43,7 +42,7 @@ $$$
 
 ![](./architecture.png)
 
-위 그림에서 SPOF는 아래와 같이 모든 지점이다. 
+위 그림에서 SPOF는 아래와 같이 모든 지점이다.
 
 ![](./spof.png)
 
@@ -67,7 +66,7 @@ SPOF를 제거하기 위해서는 어떻게 해야할까? SPOF가 되는 지점�
 
 ### 장애 극복 기능 (Failover)
 
-또, 고가용성을 위해서는 장애가 발생했을 때 곧바로 이를 인지하고 장애 상황을 복구하는 자동화된 시스템이 필요하다. 
+또, 고가용성을 위해서는 장애가 발생했을 때 곧바로 이를 인지하고 장애 상황을 복구하는 자동화된 시스템이 필요하다.
 
 ![](./heartbeat.png)
 
@@ -91,6 +90,6 @@ AWS 리전 내 가용영역(AZ)는 실제로 물리적으로 100km 떨어진 곳
 
 - [https://docs.oracle.com/cd/E19528-01/819-0992/6n3cn7p3p/index.html](https://docs.oracle.com/cd/E19528-01/819-0992/6n3cn7p3p/index.html)
 - [https://zetawiki.com/wiki/가용성](https://zetawiki.com/wiki/%EA%B0%80%EC%9A%A9%EC%84%B1)
-- [https://itwiki.kr/w/단일_장애점_문제](https://itwiki.kr/w/%EB%8B%A8%EC%9D%BC_%EC%9E%A5%EC%95%A0%EC%A0%90_%EB%AC%B8%EC%A0%9C)
+- [https://itwiki.kr/w/단일\_장애점\_문제](https://itwiki.kr/w/%EB%8B%A8%EC%9D%BC_%EC%9E%A5%EC%95%A0%EC%A0%90_%EB%AC%B8%EC%A0%9C)
 - [https://blog.stratus.com/ko/rule-nines-availability-always-on-world/](https://blog.stratus.com/ko/rule-nines-availability-always-on-world/)
 - [https://www.parallels.com/blogs/ras/ha-architecture/](https://www.parallels.com/blogs/ras/ha-architecture/)

@@ -2,9 +2,7 @@
 title: "직렬화(Serialization)와 역직렬화(Deserialization)"
 date: 2022-04-21 21:45:00
 tags:
-  - 학습기록
-  - 컴퓨터공학
-  - java
+  - Java
 ---
 
 ## 학습 동기

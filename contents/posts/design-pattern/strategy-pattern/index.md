@@ -2,10 +2,9 @@
 title: "전략 패턴 (Strategy Pattern)"
 date: 2022-02-19 17:00:00
 tags:
-  - 학습기록
   - 디자인패턴
   - 객체지향
-  - java
+  - Java
 ---
 
 ![](./thumbnail.jpeg)

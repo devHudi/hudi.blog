@@ -2,9 +2,8 @@
 title: "HTTP 캐시 무효화 (Cache Busting)"
 date: 2022-09-03 22:40:00
 tags:
-  - 학습기록
   - 네트워크
-  - http
+  - HTTP
 ---
 
 ## 정적 파일의 캐싱

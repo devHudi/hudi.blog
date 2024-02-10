@@ -2,9 +2,8 @@
 title: "실수로 MySQL 데이터를 삭제했을 때 바이너리 로그를 통해 복구하기 😱 (PIT 복구)"
 date: 2022-12-28 14:45:00
 tags:
-  - 학습기록
   - 데이터베이스
-  - mysql
+  - MySQL
 ---
 
 ## MySQL 바이너리 로그
@@ -27,7 +26,7 @@ MySQL 바이너리 로그를 활용하여 특정 시점으로 데이터를 복�
 CREATE DATABASE sample_database;
 USE sample_database;
 
-CREATE TABLE sample_table(   
+CREATE TABLE sample_table(
   id BIGINT PRIMARY KEY AUTO_INCREMENT,
   text VARCHAR(255) not null
 );
@@ -106,7 +105,6 @@ vim recover.sql
 ![](./1.png)
 
 > vim의 일반 모드에서 Shift + G를 누르면, 파일의 최하단으로 커서를 옮길 수 있다.
-> 
 
 문제의 TRUNCATE 쿼리가 보인다. 이를 `#` 또는 `/* */` 를 사용하여 주석 처리 하자. 그리고 파일을 저장한다. 이제 이 SQL 파일을 다시 MySQL에서 실행하는 일만 남았다.
 

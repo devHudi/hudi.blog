@@ -2,10 +2,8 @@
 title: "[AWS] 리전(Region)과 가용영역(Availability Zone)"
 date: 2022-06-05 20:00:00
 tags:
-  - 학습기록
-  - 데브옵스
   - 클라우드
-  - aws
+  - AWS
 ---
 
 ## 리전 (Region)

@@ -2,9 +2,7 @@
 title: "코드 커버리지(Code Coverage)란?"
 date: 2022-08-12 13:30:00
 tags:
-  - 학습기록
-  - 데브옵스
-  - 코드커버리지
+  - 테스트
 ---
 
 ## 코드 커버리지(Code Coverage)

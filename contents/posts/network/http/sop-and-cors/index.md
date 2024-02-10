@@ -2,7 +2,6 @@
 title: "CORS가 대체 무엇일까? (feat. SOP)"
 date: 2022-06-13 22:50:00
 tags:
-  - 학습기록
   - 네트워크
   - HTTP
 ---

@@ -2,9 +2,8 @@
 title: "원시 타입 대신 VO(Value Object)를 사용하자"
 date: 2022-04-14 21:00:00
 tags:
-  - 학습기록
   - 객체지향
-  - java
+  - Java
 ---
 
 ## VO(Value Object)

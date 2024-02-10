@@ -2,10 +2,8 @@
 title: "JDBC 라이브러리 구현하기"
 date: 2022-10-10 22:00:00
 tags:
-  - 학습기록
-  - spring
-  - jdbc
-  - 우아한테크코스
+  - Spring
+  - JDBC
 ---
 
 > 본 포스팅은 우아한테크코스 4기 백엔드 **[JDBC 라이브러리 구현하기](https://github.com/woowacourse/jwp-dashboard-jdbc)** 미션 과정을 정리한 내용이다.
@@ -220,7 +218,7 @@ public <T> T usePreparedStatement(final String sql, final Function<PreparedState
 
 위와 같이 `usePreparedStatement()` 라는 메소드를 만들었다. 반환 타입은 제네릭 타입 `T` 이다. 특징으로는 `Function<PreparedStatement, T>` 를 파라미터로 전달 받는다. `Function` 인터페이스는 JDK8에서 제공되는 표준 함수형 인터페이스로, 기본 형태는 `Function<T, R>` 이다. 파라미터로 `T` 타입을 받아, `R` 타입으로 반환한다. 주로 파라미터를 받아, 반환값으로 매핑할 때 사용되는 함수형 인터페이스이다.
 
- `Function` 타입으로 파라미터를 넘겨주면, 해당 람다식 파라미터에 `PreparedStatement` 를 전달하여 핵심 로직만 처리하는 방식이다. 아래와 같이 사용한다.
+`Function` 타입으로 파라미터를 넘겨주면, 해당 람다식 파라미터에 `PreparedStatement` 를 전달하여 핵심 로직만 처리하는 방식이다. 아래와 같이 사용한다.
 
 ```java
 public int update(final String sql, final Object... args) {
@@ -349,7 +347,7 @@ public class UserDao {
             throw new DataAccessException();
         }
     };
-		
+
 		// ...
 
     public List<User> findAll() {
@@ -440,7 +438,6 @@ public interface ThrowingFunction<T, R, E extends Exception> {
 ## 3단계 - 트랜잭션 적용
 
 > 이 부분에 대한 개념 학습은 **[스프링 트랜잭션 동기화 및 추상화](https://hudi.blog/spring-transaction-synchronization-and-abstraction/)** 포스팅에 정리해두었다. 내용이 비슷하니 이 포스팅과 함께 읽어보자.
-> 
 
 ### 1. 트랜잭션 경계 설정하기
 
@@ -549,7 +546,7 @@ public void changePassword(final long id, final String newPassword, final String
 }
 ```
 
-`JdbcTemplate` 이 커넥션을 해제하는 코드도 수정해야한다. 쿼리를 실행하자마자 `Connection` 을 해제해버리면 다음 쿼리에서 오류가 발생하기 때문이다. 
+`JdbcTemplate` 이 커넥션을 해제하는 코드도 수정해야한다. 쿼리를 실행하자마자 `Connection` 을 해제해버리면 다음 쿼리에서 오류가 발생하기 때문이다.
 
 ```java
 /* JdbcTemplate */

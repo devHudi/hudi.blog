@@ -2,10 +2,9 @@
 title: "격리된 테스트 (Isolated Test) (feat. Spring 에서 테스트 격리하기)"
 date: 2022-05-19 12:50:00
 tags:
-  - 학습기록
   - 테스트
-  - spring
-  - java
+  - Spring
+  - Java
 ---
 
 ## 격리된 테스트 (Isolated Test)

@@ -2,8 +2,7 @@
 title: "String 클래스의 equalsIgnoreCase() 메소드"
 date: 2022-09-04 12:00:00
 tags:
-  - 학습기록
-  - java
+  - Java
 ---
 
 ## 학습 배경

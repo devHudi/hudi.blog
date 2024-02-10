@@ -2,7 +2,6 @@
 title: "URI, URL 그리고 URN"
 date: 2022-07-24 23:30:00
 tags:
-  - 학습기록
   - 네트워크
   - HTTP
 ---

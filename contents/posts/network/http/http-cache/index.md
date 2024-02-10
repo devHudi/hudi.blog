@@ -2,9 +2,8 @@
 title: "HTTP 캐시 (Cache-Control, 유효성 검증 및 조건부 요청 등)"
 date: 2022-09-03 22:00:00
 tags:
-  - 학습기록
   - 네트워크
-  - http
+  - HTTP
 ---
 
 ## 캐시란?

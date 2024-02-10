@@ -2,11 +2,8 @@
 title: "분리 인터페이스(Separated Interface) 패턴을 사용하여 시스템간 결합을 느슨하게 설계하기"
 date: 2022-08-21 15:40:00
 tags:
-  - 학습기록
   - 디자인패턴
-  - DDD
   - 달록
-  - 우아한테크코스
 ---
 
 ## 분리 인터페이스(Separated Interface) 패턴

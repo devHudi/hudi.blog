@@ -3,7 +3,6 @@ title: "slf4j MDC(Mapped Diagnostics Context)를 사용하여 로그에 맥락 �
 date: 2023-10-20
 tags:
   - 로깅
-  - slf4j
 ---
 
 ## 뒤섞여 추적이 어려운 로그

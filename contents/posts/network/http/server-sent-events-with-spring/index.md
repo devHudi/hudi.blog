@@ -2,10 +2,9 @@
 title: "Server-Sent Events 알아보기 (feat. Spring)"
 date: 2022-09-04 01:00:00
 tags:
-  - 학습기록
   - 네트워크
-  - http
-  - spring
+  - HTTP
+  - Spring
 ---
 
 ## 비연결성 프로토콜, HTTP

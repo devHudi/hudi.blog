@@ -2,9 +2,8 @@
 title: "데이터베이스 레플리케이션을 통한 쿼리 성능 개선 (feat. Mysql, SpringBoot)"
 date: 2022-10-09 22:15:00
 tags:
-  - 학습기록
-  - spring
-  - mysql
+  - Spring
+  - MySQL
   - 데이터베이스
 ---
 
@@ -106,14 +105,14 @@ expire-logs-days = 7
 binlog_do_db = replication
 ```
 
-- **max\_allowed\_packet** : 서버로 질의하거나 받게되는 패킷의 최대 길이
+- **max_allowed_packet** : 서버로 질의하거나 받게되는 패킷의 최대 길이
 - **server-id** : 서버의 ID. 레플리케이션 토폴로지 내의 서버는 각각 고유한 서버 ID를 가져야한다. 즉, 이 값은 레플리카 서버와 반드시 달라야한다.
 - **log-bin** : 바이너리 로그 파일 경로 (`/var/lib/mysql/mysql-bin.XXXXXX` 형식으로 저장됨)
 - **binlog_format** : 바이너리 로그의 저장 형식을 지정한다. `STATEMENT` , `ROW` , `MIXED` 이 3가지 중 하나를 선택할 수 있다. 자세한 차이점은 **[공식문서](https://dev.mysql.com/doc/refman/5.7/en/binary-log-setting.html)**를 확인하자.
-- **max\_binlog\_size** : 바이너리 로그의 최대 크기
+- **max_binlog_size** : 바이너리 로그의 최대 크기
 - **sync_binlog** : N개의 트랜잭션 마다 바이너리 로그를 디스크에 동기화 시킬지 결정한다. `1` 은 가장 안정적이지만, 가장 느린 설정이다.
 - **expire-logs-days** : 바이너리 로그가 만료되는 기간 설정
-- **binlog\_do\_db** : 레플리케이션을 적용할 데이터베이스 이름 설정. 설정하지 않으면, 모든 데이터베이스 대상으로 레플리케이션이 진행된다.
+- **binlog_do_db** : 레플리케이션을 적용할 데이터베이스 이름 설정. 설정하지 않으면, 모든 데이터베이스 대상으로 레플리케이션이 진행된다.
 
 설정이 끝났다면, 아래와 같이 MySQL에서 소스 서버의 상태를 조회하자. 여기서 중요한 것은 `File` 과 `Position` 이다. 레플리케이션에서는 이 `File` 과 `Position` 값으로 Source - Replica 서버가 동기화가 진행된다. 아래 값을 기억하자.
 

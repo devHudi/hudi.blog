@@ -2,8 +2,7 @@
 title: "자바 리플렉션 (Reflection) 기초"
 date: 2022-09-17 01:40:00
 tags:
-  - 학습기록
-  - java
+  - Java
 ---
 
 ## 리플렉션 (Reflection)

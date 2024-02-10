@@ -2,9 +2,8 @@
 title: "Spring Bean과 IoC Container"
 date: 2022-04-23 12:00:00
 tags:
-  - 학습기록
-  - spring
-  - java
+  - Spring
+  - Java
 ---
 
 ## 학습동기

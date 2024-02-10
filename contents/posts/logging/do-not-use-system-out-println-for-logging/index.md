@@ -2,7 +2,6 @@
 title: "로깅을 System.out.println() 로 하면 안되는 이유"
 date: 2022-08-01 10:30:00
 tags:
-  - 학습기록
   - 로깅
 ---
 

@@ -2,11 +2,10 @@
 title: "Spring Boot Actuator, Prometheus, Grafana를 사용한 스프링부트 모니터링 환경 구축"
 date: 2022-12-27 17:00:00
 tags:
-  - 학습기록
-  - 데브옵스
+  - 모니터링
   - Prometheus
   - Grafana
-  - Spring Boot Actuator
+  - Spring
 ---
 
 이 포스팅에서는 Spring Actuator, Prometheus, Grafana를 사용하여 스프링부트 애플리케이션과 관련된 여러 메트릭을 수집하고, 시각화하여 모니터링할 수 있는 환경을 구축한다. 이 글에서는 각각의 컨셉과 환경 구성 방법을 전체적으로 다룬다. 각각에 대한 자세한 내용은 추후 학습하여 포스팅 해보도록 하겠다.
@@ -49,7 +48,6 @@ management:
 `include` 에 노출할 엔드포인트 이름을 쉼표로 구분하여 기입하면 된다. 반대로 노출하고 싶지 않다면, `exclude` 에 기입하면 된다. 일단 우리는 Prometheus에서 사용할 엔드포인트만 노출하는 것이 목적이므로 위와 같이 설정한다.
 
 > Spring Actuator가 제공하는 다양한 엔드포인트는 [https://docs.spring.io/spring-boot/docs/current/reference/html/actuator.html#actuator.endpoints](https://docs.spring.io/spring-boot/docs/current/reference/html/actuator.html#actuator.endpoints) 에서 더 알아보자.
-> 
 
 ![노출된 /prometheus 엔드포인트](./actuator-prometheus-endpoint.png)
 
@@ -62,7 +60,6 @@ management:
 ### 트러블 슈팅 - Springfox와의 충돌
 
 > 이 부분은 Swagger를 사용하기 위해 Springfox 의존성을 프로젝트에 포함시킨 경우에만 읽으면 된다.
-> 
 
 필자는 Spring Boot Actuator를 설정하기 전에, 프로젝트에서 Springfox를 사용하여 Swagger 문서를 만들었다. 그런데, **Spring Boot Actuator와 Springfox는 서로 충돌**이 발생한다. 이는 Springfox 저장소 **[#3462 이슈](https://github.com/springfox/springfox/issues/3462)** 에서도 확인할 수 있다. **[Stackoverflow 답변](https://stackoverflow.com/questions/70695150/how-to-befriend-spring-boot-2-6-x-with-actuator-dependency-and-swagger-starter-3)** 에 나와있는 것 처럼 문제를 해결할 수 있다.
 
@@ -75,7 +72,6 @@ Prometheus는 SoundCloud 사에서 개발한 오픈소스이다. Prometheus는 *
 **메트릭(metric)**이란, 간단하게 말하자면 **숫자 데이터**이다. 메트릭의 예로는 요청 시간, 데이터베이스 활성 연결 수, CPU 사용량 등이 있다. 그리고 Prometheus는 이 메트릭을 **HTTP를 통한 pull model**을 통해 주기적으로 수집하여 **시계열(time series) 데이터로 저장**한다. 따라서, 숫자로 구성된 시계열 데이터를 수집하고 모니터링 하는데 적합하다.
 
 > 일반적인 다른 모니터링 도구는 서버에 클라이언트를 설치하고 클라이언트가 메트릭 데이터를 수집해서 서버로 보내는 방식으로 동작하는데, Prometheus는 반대로 직접 주기적으로 Pull 해오는 방식으로 동작한다.
-> 
 
 ### 설치
 
@@ -101,7 +97,6 @@ scrape_configs:
 - `scrape_configs.static_configs.metric_path` : 메트릭 정보의 경로를 명시한다. Actuator를 사용하였으므로, 위와 같이 작성한다.
 
 > 더 자세한 설정 작성 방법은 [https://prometheus.io/docs/prometheus/latest/configuration/configuration/](https://prometheus.io/docs/prometheus/latest/configuration/configuration/) 를 참고하자.
-> 
 
 #### 도커 컨테이너 실행
 
@@ -125,7 +120,7 @@ Prometheus 설정은 이것으로 끝났다. 이제 주기적으로 수집된 �
 
 ![Grafana 대시보드 예시](./grafana-example.png)
 
-Grafana는 오픈소스 데이터 시각화 및 메트릭 분석 도구이다. Prometheus도 기본적으로 시각화를 제공하지만, 위 사진처럼 Grafana는 정말 강력한 시각화를 제공한다. 여러 Data Source를 불러와 시각화 할 수 있는데, 그 중 Prometheus도 지원한다. 
+Grafana는 오픈소스 데이터 시각화 및 메트릭 분석 도구이다. Prometheus도 기본적으로 시각화를 제공하지만, 위 사진처럼 Grafana는 정말 강력한 시각화를 제공한다. 여러 Data Source를 불러와 시각화 할 수 있는데, 그 중 Prometheus도 지원한다.
 
 ### 설치
 
@@ -145,7 +140,7 @@ Grafana에 접속하면, 위와 같은 로그인 페이지에 접속된다. 초�
 
 ![좌측 하단 ⚙️ → Data sources](./grafana-add-data-sources.png)
 
-이어서 Grafana 대시보드에 접속되면, 위 사진과 같이 좌측 하단의 톱니바퀴 아이콘에 마우스를 올리고 Data sources를 클릭한다. 이후 페이지에서 Add data source 클릭하고, 다음 페이지에서 Prometheus을 선택한다. 
+이어서 Grafana 대시보드에 접속되면, 위 사진과 같이 좌측 하단의 톱니바퀴 아이콘에 마우스를 올리고 Data sources를 클릭한다. 이후 페이지에서 Add data source 클릭하고, 다음 페이지에서 Prometheus을 선택한다.
 
 ![Data source 설정](./grafana-data-source-set-up.png)
 

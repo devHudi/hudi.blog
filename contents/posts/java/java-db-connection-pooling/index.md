@@ -2,12 +2,10 @@
 title: "DB ConnectionPool 적용하기 (feat. JDBC Driver, DataSource, HikariCP)"
 date: 2022-10-02 21:15:00
 tags:
-  - 학습기록
-  - java
-  - spring
-  - hikaricp
+  - Java
+  - Spring
+  - HikariCP
   - 데이터베이스
-  - 우아한테크코스
 ---
 
 ## stage0 - **DataSource 다루기**

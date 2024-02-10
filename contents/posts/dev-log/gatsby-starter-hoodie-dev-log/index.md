@@ -3,7 +3,7 @@ title: "Gatsby 를 이용한 기술 블로그 개발 후기"
 date: 2021-08-30 01:00:00
 tags:
   - 개발일지
-  - gatsby
+  - Gatsby
 ---
 
 ![](./1.png)

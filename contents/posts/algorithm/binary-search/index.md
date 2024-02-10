@@ -2,7 +2,6 @@
 title: "[ALG] 이진 탐색 (Binary Search)"
 date: 2021-09-14 01:00:00
 tags:
-  - 컴퓨터공학
   - 알고리즘
 ---
 
