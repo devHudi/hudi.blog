@@ -44,14 +44,14 @@ const Body = ({ html }) => {
 
       <PrismTheme />
 
-      <PostTopAdWrapper>
+      {/* <PostTopAdWrapper>
         <GoogleAdvertise
           client="ca-pub-2692445439426078"
           slot="2295339271"
           format="auto"
           responsive="true"
         />
-      </PostTopAdWrapper>
+      </PostTopAdWrapper> */}
 
       <StyledMarkdown
         id="article-body"
@@ -60,14 +60,14 @@ const Body = ({ html }) => {
         ref={ref}
       />
 
-      <PostBottomAdWrapper>
+      {/* <PostBottomAdWrapper>
         <GoogleAdvertise
           client="ca-pub-2692445439426078"
           slot="2295339271"
           format="auto"
           responsive="true"
         />
-      </PostBottomAdWrapper>
+      </PostBottomAdWrapper> */}
     </Wrapper>
   )
 }
