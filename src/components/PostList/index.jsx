@@ -33,7 +33,7 @@ const Date = styled.p`
 const Excerpt = styled.p`
   margin-bottom: 32px;
   line-height: 1.7;
-  font-size: 16px;
+  font-size: 15px;
   color: ${props => props.theme.colors.secondaryText};
   word-break: break-all;
 `
