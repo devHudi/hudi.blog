@@ -10,7 +10,7 @@ tags:
 
 ![출처: https://www.wisdomgeek.com/development/software-architecture/load-balancing-and-its-different-types/](./load-balancing.png)
 
-**[수직 확장(Scale up) vs 수평 확장(Scale out)](https://hudi.blog/scale-up-vs-scale-out/)** 포스트에서 이야기했듯 서비스 사용자가 늘어가면, 서버를 확장해야 한다. 경제적인 이유로 스케일업을 많이 선택하게 되는데, 이런 다중 서버 환경에서 한 서버에 트래픽이 몰리지 않도록 부하를 여러 서버에 적절히 분산해주는 작업을 로드 밸런싱이라고 한다.
+**[수직 확장(Scale up) vs 수평 확장(Scale out)](https://hudi.blog/scale-up-vs-scale-out/)** 포스트에서 이야기했듯 서비스 사용자가 늘어가면, 서버를 확장해야 한다. 경제적인 이유로 스케일 아웃을 많이 선택하게 되는데, 이런 다중 서버 환경에서 한 서버에 트래픽이 몰리지 않도록 부하를 여러 서버에 적절히 분산해주는 작업을 로드 밸런싱이라고 한다.
 
 이번 포스트에서는 내가 클라우드 환경에서 Nginx를 이용하여 로드밸런싱 환경을 구축한 과정을 정리해본다. Nginx를 로드 밸런서로 사용하는 이유는 간단하고 저렴하기 때문이다. L4, L7 스위치 등은 하드웨어로 구성해야하며 가격이 비싸다. 반면 Nginx를 사용하면, 서버에 소프트웨어만 설치하면 되므로 시간과 비용이 절약된다.
 

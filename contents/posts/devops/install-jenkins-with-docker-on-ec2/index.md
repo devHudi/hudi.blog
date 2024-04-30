@@ -190,7 +190,7 @@ $ cat /var/jenkins_home/secrets/initialAdminPassword
 그 다음 위 화면에서 Install suggested plugins를 클릭하여 추천되는 플러그인을 설치합니다. 그 이후 요구되는 여러 정보의 입력을 끝 마쳐주세요.
 
 ```
-System.setProperty('org.apache.commons.jelly.tags.fmt.timeZone
+System.setProperty('org.apache.commons.jelly.tags.fmt.timeZone', 'Asia/Seoul')
 ```
 
 이후 대시보드에서 **Jenkins 관리 > Script Console** 에서 위의 스크립트를 입력하여 타임존을 서울로 설정하기만 하면, 젠킨스 기본 설정이 완료됩니다! 🎉
