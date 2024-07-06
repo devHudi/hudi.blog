@@ -9,7 +9,7 @@ tags:
 
 ## MySQL이 알아서 PK로 정렬해줄 것이라는 오해
 
-흔히 SELECT 를 실행하면 Primary Key 기준으로 오름차순 정렬이 되는 것을 보고, MySQL의 기본 정렬은 PK 기준이라고 생각할 수도 있다.
+흔히 `SELECT` 쿼리를 실행하면 Primary Key 기준으로 오름차순 정렬이 되는 것을 보고, MySQL의 기본 정렬은 PK 기준이라고 생각할 수도 있다.
 
 ```sql
 CREATE TABLE user
