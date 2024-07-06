@@ -1,5 +1,5 @@
 ---
-title: "MySQL는 Order By가 없다면 정렬을 보장하지 않는다."
+title: "MySQL는 Order By가 없다면 정렬을 보장하지 않는다"
 date: 2024-07-06 20:30
 tags:
   - 달록
