@@ -112,7 +112,7 @@ mysql> SELECT * FROM user WHERE age > 25 AND email LIKE '%@test.com' ORDER BY id
 
 ![SQL-92 내용 발췌](./sql-92.png)
 
-> 4. If an <order by clause> is not specified, then the ordering of the rows of Q is implementation-dependent.
+> 4. If an \<order by clause\> is not specified, then the ordering of the rows of Q is implementation-dependent.
 
 SQL-92 문서를 읽어보면 중후반부에 **_‘만일 order by 절이 명세되지 않았다면, Q(쿼리)의 정렬은 구현에 의존한다.’_** 라는 내용이 명확히 존재하는 것을 알 수 있다.
 
