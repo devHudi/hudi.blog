@@ -24,6 +24,12 @@ const ArticleTitle = styled.h1`
   color: ${props => props.theme.colors.text};
 `
 
+const Wrapper = styled.div`
+  @media (max-width: 768px) {
+    padding: 0 15px;
+  }
+`
+
 const BlogIndex = ({ data }) => {
   const aboutPost = data.markdownRemark
   const postsCount = data.allMarkdownRemark.totalCount
@@ -37,10 +43,14 @@ const BlogIndex = ({ data }) => {
       <Bio />
       <Tab postsCount={postsCount} activeTab="about" />
       <Article>
-        <ArticleTitle>{aboutPost.frontmatter.title}</ArticleTitle>
+        <Wrapper>
+          <ArticleTitle>{aboutPost.frontmatter.title}</ArticleTitle>
+        </Wrapper>
         <Article.Body html={aboutPost.html} hideToc />
-        <Divider />
-        <Comment />
+        <Wrapper>
+          <Divider />
+          <Comment />
+        </Wrapper>
       </Article>
     </Layout>
   )
