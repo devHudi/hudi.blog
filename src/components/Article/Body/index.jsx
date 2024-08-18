@@ -25,7 +25,7 @@ const PostBottomAdWrapper = styled.div`
   margin-top: 40px;
 `
 
-const Body = ({ html }) => {
+const Body = ({ html, hideToc }) => {
   const [toc, setToc] = useState([])
 
   const [ref, offsetTop] = useOffsetTop()
@@ -40,7 +40,7 @@ const Body = ({ html }) => {
 
   return (
     <Wrapper>
-      <Toc items={toc} articleOffset={offsetTop} />
+      {hideToc || <Toc items={toc} articleOffset={offsetTop} />}
 
       <PrismTheme />
 

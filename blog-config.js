@@ -5,11 +5,10 @@ module.exports = {
   siteUrl: "https://hudi.blog",
   links: {
     github: "https://github.com/devHudi",
-    facebook: "https://www.facebook.com/profile.php?id=100057724153835",
     linkedIn:
       "https://www.linkedin.com/in/%EB%8F%99%ED%98%84-%EC%A1%B0-a88aa6254/",
   },
-  useAbout: false,
+  useAbout: true,
   utterances: {
     repo: "devHudi/hudi.blog",
     type: "pathname",

@@ -10,7 +10,7 @@ import { useAbout } from "../../../blog-config"
 const TabWrapper = styled.div`
   display: flex;
   justify-content: center;
-  gap: 30px;
+  gap: 15px;
   border-bottom: 1px solid ${props => props.theme.colors.divider};
   margin-top: 35px;
   margin-bottom: 48px;

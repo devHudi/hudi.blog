@@ -7,12 +7,14 @@ import Bio from "components/Bio"
 import VerticalSpace from "components/VerticalSpace"
 import Article from "components/Article"
 import Tab from "components/Tab"
+import Comment from "components/Article/Footer/Comment"
 
 import NotFoundPage from "pages/404"
 
 import styled from "styled-components"
 
 import { title, description, siteUrl, useAbout } from "../../blog-config"
+import Divider from "components/Divider"
 
 const ArticleTitle = styled.h1`
   margin-bottom: 30px;
@@ -36,8 +38,9 @@ const BlogIndex = ({ data }) => {
       <Tab postsCount={postsCount} activeTab="about" />
       <Article>
         <ArticleTitle>{aboutPost.frontmatter.title}</ArticleTitle>
-        <Article.Body html={aboutPost.html} />
-        <Article.Footer />
+        <Article.Body html={aboutPost.html} hideToc />
+        <Divider />
+        <Comment />
       </Article>
     </Layout>
   )
