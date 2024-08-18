@@ -9,6 +9,7 @@ module.exports = {
     linkedIn:
       "https://www.linkedin.com/in/%EB%8F%99%ED%98%84-%EC%A1%B0-a88aa6254/",
   },
+  useAbout: false,
   utterances: {
     repo: "devHudi/hudi.blog",
     type: "pathname",
