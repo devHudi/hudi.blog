@@ -14,4 +14,15 @@ module.exports = {
     repo: "devHudi/hudi.blog",
     type: "pathname",
   },
+  giscus: {
+    repo: "devHudi/hudi.blog",
+    repoId: "MDEwOlJlcG9zaXRvcnkzNjk4NjMzNTg=",
+    category: "Comments",
+    categoryId: "DIC_kwDOFguqvs4ChwGy",
+    mapping: "pathname",
+    strict: "1",
+    reactionsEnabled: "1",
+    inputPosition: "bottom",
+    lang: "ko",
+  },
 }
