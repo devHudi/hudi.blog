@@ -26,6 +26,10 @@ const StyledMarkdown = styled.div`
     margin-bottom: 15px;
   }
 
+  & span.katex-html {
+    margin: 40px 0;
+  }
+
   & p {
     overflow-x: scroll;
     word-break: break-word;
